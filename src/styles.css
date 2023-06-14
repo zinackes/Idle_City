@@ -19,12 +19,17 @@ h5{
     --DarkBlue-800-transparent: hsl(206, 63%, 9%, 0.77);
     --blue: #00364B;
     --grey: #C0BFA9;
-    --img: 19px; 
+    --img: 17px; 
+    --img-money: 25px;
+    --img-energy: 21px;
+    --img-water: 19px;
     --green: #00f500;
+    --red: #B9121B;
 }
 
 header{
     min-height: 70px;   
+    position: relative;
     width: 100%;
     background-color: var(--DarkBlue-800);
 }
@@ -32,7 +37,18 @@ header h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+}
+
+#ButtonChangeBuyModeText{
+    position: absolute;
+    right: 1.5%;
+    top: 45%;
+    background-color: var(--DarkBlue-900);
+    color: var(--white);
+    padding: .3rem 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
 }
 
 main{
@@ -60,6 +76,8 @@ main{
     padding: 0.45rem;
     border-radius: 5px;
 }
+
+
 .col-name{
     text-transform: uppercase;
     font-size: 12.5px;
@@ -86,6 +104,16 @@ main{
 .row-display{
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition: all .3s ease-in-out;
+    padding: 0.20rem 0;
+}
+.row-display-sous-categorie{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 17%;
+    font-size: 12.8px;
     transition: all .3s ease-in-out;
     padding: 0.20rem 0;
 }
@@ -99,6 +127,22 @@ main{
     margin-right: 5px;
     margin-left: 4px;
 }
+.money-img{
+    width: var(--img-money) !important;
+    height: var(--img-money) !important;
+    aspect-ratio: auto var(--img-money)/var(--img-money) !important;
+}
+.energy-img{
+    width: var(--img-energy) !important;
+    height: var(--img-energy) !important;
+    aspect-ratio: auto var(--img-energy)/var(--img-energy) !important;
+}
+.water-img{
+    width: var(--img-water) !important;
+    height: var(--img-water) !important;
+    aspect-ratio: auto var(--img-water)/var(--img-water) !important;
+}
+
 .row{
     color: var(--white);
     font-size: 14px;
@@ -136,7 +180,6 @@ main{
     height: 100%;
     position: absolute;
     border-radius: 4px;
-    display: flex;
     flex-direction: column;
     padding: .75rem 2.5rem;
     gap: 2.25rem;
@@ -159,6 +202,26 @@ main{
     flex-direction: column;
     gap: 6px;
 }
+
+.contentMilestoneBar{
+    position: absolute;
+    background-color: var(--blue);
+    width: 100%;
+    height: 4.5px;
+    left: 0;
+    top: 0;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.milestoneBar{
+    width: 80%;
+    height: 4.5px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    background: linear-gradient( 99.9deg, rgb(5, 71, 122) 21.2%, #100772  84.8% );
+    transition: all .3s ease-in-out;
+}
+
 .display{
     display: flex;
     padding: 0 0.25rem;
@@ -194,9 +257,10 @@ main{
 }
 
 .list .content{
-    width: 400px;
-    height: 220px;
-    border-radius: 5px;
+    width: 650px;
+    height: 250px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     padding: .75rem;
     display: flex;
     gap: 0;
@@ -240,16 +304,40 @@ main{
 }
 .contentBox p{
     font-size: 12px;
+    transition: color .3s ease-in-out;
 }
 .contentBoxElement{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
     margin-top: 11px;
 }
+.contentBoxElement .tag{
+    margin-bottom: 8px;
+}
 
-.tag{
+.economy{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.economyTag{
+    background-color: var(--DarkBlue-900) !important;
+    margin-top: 20px;
+    padding: 0.30 .10rem;
+}
+
+.progressBarTag{
+    padding: 0 !important;
+    margin-top: 20px;
+    background-color: var(--DarkBlue-900) !important;
+    width: 80px !important;
+    position: relative;
+}
+
+.tag, .economyTag, .progressBarTag{
     background-color: var(--DarkBlue-800);
     padding: 0.20rem .9rem;
     width: auto;
@@ -260,44 +348,68 @@ main{
     line-height: normal;
 }
 
+.progressBar{
+    width: 80%;
+    opacity: .5;
+    height: 100%;
+    position: absolute;
+    border-radius: inherit;
+    background-color: white;
+}
+
 .content button{
     position: absolute;
     bottom: 5%;
     left: 40%;
-    padding: 0.1rem 0.8rem;
-    border-radius: 5px;
-    background-color: var(--grey);
+    background-color: var(--DarkBlue-900);
+    color: var(--white);
+    padding: .3rem 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
     border: none;
+    transition: all .4s ease-in-out;
+}
+.content button:hover{
+    transition: all .4s ease-in-out;
+    background-color: var(--blue);
 }
 
-.contentProgressBar{
-    width: 300px;
+.map{
+    position: relative;
+    width: 930px
+}
+.map img{
+    width: 930px;
+}
+.waypoint{
+    position: absolute;
     height: 10px;
-    background-color: black;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
+    width: 10px;
+    border-radius: 50%;
+    background-color: var(--black);
 }
-.progressbar{
-    background-color: white;
-    height: 10px;
-    transition: width .3s ease-in-out;
+.waypointtext{
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--black);
+    border-radius: 6px;
 }
-.progressbar:nth-child(1){
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    background-color: #004456;
+
+.france .waypointtext{
+    top: -24px;
+    left: -50px;
 }
-.progressbar:nth-child(2){
-    background-color: #007476;
-}
-.progressbar:nth-child(3){
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: #25A57F;
+
+.france{
+    top: 34%;
+    left: 50.1%;
 }
 
 
+.waypoint:hover .waypointtext{
+    visibility: visible;
+}
 
 .active{
     display: flex;

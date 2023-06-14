@@ -3,6 +3,8 @@
 function data() {
   const saveObject = {
     money,
+    energy,
+    water,
   };
 
   // Convertir l'objet en chaîne JSON
@@ -29,6 +31,8 @@ function loadData() {
     // Convertir la chaîne JSON en objet et charger les données
     const saveObject = JSON.parse(saveString);
     money = saveObject.money;
+    energy = saveObject.energy;
+    water = saveObject.water;
 
     console.log('Données chargées !');
   } else {

@@ -13,8 +13,53 @@
 <body>
 
     <header>
-        <h1>Money: <span id="money-text"></span></h1>
-        <p>Money per second: <span id="moneyPerSecond"></span></p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/money.png" alt="" class="money-img">
+                        <h1><span id="money-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/money.png" alt="">
+                    <p><span id="moneyPerSecond-text">19/s</span></p>
+                </div>
+            </div>
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/energy.png" alt="" class="energy-img">
+                        <h1><span id="energy-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/energy.png" alt="">
+                    <p><span id="energyPerSecond-text">1/s</span></p>
+                </div>
+            </div>
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/water.png" alt="" class="water-img">
+                        <h1><span id="water-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/water.png" alt="">
+                    <p><span id="waterPerSecond-text">1/s</span></p>
+                </div>
+            </div>
+            <div class="progressBarTag">
+                <div class="progressBar">
+
+                </div>
+                <div class="row-display">
+                    <h4><span id="">80%</span></h4>
+                </div>
+            </div>
+        </div>
+        <button onclick="ChangeBuyMode()" id="ButtonChangeBuyModeText">change buy mode</button>
         <button onclick="Reset()">Reset</button>
     </header>
 
@@ -22,20 +67,20 @@
         <div class="left-content">
             <div class="col">
                 <div class="col-name">
-                    <p>Solar system</p>
+                    <p>Population</p>
                 </div>
                 <div class="row-group">
                     <div class="row-display">
-                        <img src="../assets/icons/earth-globe.png" alt="">
-                        <p class="row">Earth</p>
+                        <img src="../assets/icons/building.png" alt="">
+                        <p class="row">Buildings</p>
                     </div>
                     <div class="row-display">
-                        <img src="../assets/icons/mars.png" alt="">
-                        <p class="row">Mars</p>
+                        <img src="../assets/icons/centrale-electrique.png" alt="">
+                        <p class="row">Energy</p>
                     </div>
                     <div class="row-display">
                         <img src="../assets/icons/venus.png" alt="">
-                        <p class="row">Venus</p>
+                        <p class="row">City map</p>
                     </div>
                 </div>
             </div>
@@ -63,35 +108,72 @@
         <div class="main-content">
             <div class="menu">
                 <div class="info">
-                    <h1>Earth</h1>
-                    <div class="content" id="Summary1">
-                        Availablity
-                        <div class="display row" style="margin-top: 2px;">
-                            <h5>Wood</h5>
-                            <p><span id="ProductionBoostSum1" class="green"></span> /s</p>
-                            <img src="../assets/icons/checked.png" alt="" id="MaterialCheck1">
-                        </div>
-                        <div class="display row">
-                            <h5>Stone</h5>
-                            <p><span class="green" id="ProductionBoostSum2"></span>/s</p>
-                            <img src="../assets/icons/not_checked.png" alt="" id="MaterialCheck2">
-                        </div>
-                    </div>
+                    <h1>Habitations</h1>
                 </div>
                 <div class="list">
                     <div class="ContainerUpgrades">
                         <div class="content">
+                            <div class="contentMilestoneBar">
+                                <div class="milestoneBar" id="milestoneBar1"></div>
+                            </div>
                             <div class="contentTitle">
-                                <h2>Wood</h2>
+                                <h2 id="HouseText">House</h2>
                                 <p>The wood is the most common </p>
                                 <div class="contentBoxElement">
                                     <div class="tag">Informations</div>
                                     <div class="display">
                                         <div class="row-display">
-                                            <img src="../assets/icons/boxes.png" alt="">
+                                            <img src="../assets/icons/house.png" alt="">
                                             <h5>Quantity</h5>
                                         </div>
-                                        <p><span id="ProductionQuantity1"></span></p>
+                                        <p><span id="ProductionQuantity1"></span>/ <span id="ProductionMilestone1"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                    <div class="tag">Population</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/adult.png" alt="">
+                                            <h5>Adult</h5>
+                                        </div>
+                                        <p><span id="AdultText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Worker</h5>
+                                        </div>
+                                        <p><span id="WorkerText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Unemployed</h5>
+                                        </div>
+                                        <p><span id="UnemployedText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Retired</h5>
+                                        </div>
+                                        <p><span id="RetiredText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Child</h5>
+                                        </div>
+                                        <p><span id="ChildText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5 style="font-size: 0.85rem; color: #cbe6ff;">Total</h5>
+                                        </div>
+                                        <p style="font-size: 14px; color: #cbe6ff;"><span id="TotalPop1"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +182,10 @@
                                      <div class="tag">Production</div>
                                      <div class="display">
                                         <div class="row-display">
-                                            <img src="../assets/icons/wood.png" alt="">
-                                            <h5>Wood</h5>
+                                            <img src="../assets/icons/peoples.png" alt="">
+                                            <h5>Citizens</h5>
                                         </div>
-                                        <p><span id="ProductionBoost1" class="green"></span> /s</p>
+                                        <p><span id="ProductionBoost1" class="green"></span></p>
                                     </div>
                                 </div>
                                 <div class="contentBoxElement">
@@ -113,15 +195,29 @@
                                             <img src="../assets/icons/money.png" alt="">
                                             <h5>Money</h5>
                                         </div>
-                                        <p><span id="ProductionCost1"></span></p>
+                                        <p id="nbr"><span id="ProductionCost1"></span></p>
                                      </div>
+                                     <div class="display">
+                                         <div class="row-display">
+                                             <img src="../assets/icons/energy.png" alt="">
+                                             <h5>Energy</h5>
+                                         </div>
+                                         <p><span id="ProductionCostEnergy1"></span></p>
+                                      </div>
+                                      <div class="display">
+                                          <div class="row-display">
+                                              <img src="../assets/icons/water.png" alt="">
+                                              <h5>Water</h5>
+                                          </div>
+                                          <p><span id="ProductionCostWater1"></span></p>
+                                       </div>
                                 </div>
                             </div>
-                            <button onclick="Buy(0, 0, 0)">Buy</button>
+                            <button onclick="Buy(0, 0, 1)" id="BuildingBuyButton1" class="BuyButton">Buy</button>
                         </div>
                         <div class="content">
                             <div class="contentTitle">
-                                <h2>Stone</h2>
+                                <h2>Building</h2>
                                 <p>The wood is a common </p>
                                 <div class="contentBoxElement">
                                     <div class="tag">Informations</div>
@@ -130,7 +226,54 @@
                                             <img src="../assets/icons/boxes.png" alt="">
                                             <h5>Quantity</h5>
                                         </div>
-                                        <p><span id="ProductionQuantity2"></span></p>
+                                        <p><span id="ProductionQuantity2"></span>/ <span id="ProductionMilestone2"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                    <div class="tag">Population</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Adult</h5>
+                                        </div>
+                                        <p><span id="AdultText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Worker</h5>
+                                        </div>
+                                        <p><span id="WorkerText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Unemployed</h5>
+                                        </div>
+                                        <p><span id="UnemployedText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Retired</h5>
+                                        </div>
+                                        <p><span id="RetiredText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Child</h5>
+                                        </div>
+                                        <p><span id="ChildText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5 style="font-size: 0.85rem;">Total</h5>
+                                        </div>
+                                        <p style="font-size: 14px;"><span id="TotalPop2"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -139,10 +282,10 @@
                                      <div class="tag">Production</div>
                                      <div class="display">
                                         <div class="row-display">
-                                            <img src="../assets/icons/wood.png" alt="">
-                                            <h5>Stone</h5>
+                                            <img src="../assets/icons/peoples.png" alt="">
+                                            <h5>Citizens</h5>
                                         </div>
-                                        <p><span id="ProductionBoost2" class="green"></span> /s</p>
+                                        <p><span id="ProductionBoost2" class="green"></span></p>
                                     </div>
                                 </div>
                                 <div class="contentBoxElement">
@@ -154,9 +297,16 @@
                                         </div>
                                         <p><span id="ProductionCost2"></span></p>
                                      </div>
+                                     <div class="display">
+                                         <div class="row-display">
+                                             <img src="../assets/icons/energy.png" alt="">
+                                             <h5>Energy</h5>
+                                         </div>
+                                         <p><span id="ProductionCostEnergy2"></span></p>
+                                      </div>
                                 </div>
                             </div>
-                            <button onclick="Buy(0, 1, 0)">Buy</button>
+                            <button onclick="Buy(0, 1, 20)" id="BuildingBuyButton2">Buy</button>
                         </div>
                     </div>
                     <div class="ContainerOther">
@@ -215,6 +365,19 @@
                                      </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                ratio
+            </div>
+            <div class="menu active">
+                <div class="map">
+                    <img src="../assets/images/MapChart_Map.png" alt="">
+                    <div class="waypoint france">
+                        <div class="waypointtext">
+                            <span>ratio</span>
                         </div>
                     </div>
                 </div>
