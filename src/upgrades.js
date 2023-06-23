@@ -134,6 +134,10 @@ function UpgradesUpdate(index, index2, BuyMode){
 
   const HouseText = document.getElementById("HouseText");
 
+  const PrestigeText = document.getElementById(`PrestigeText${index2+1}`);
+  const PrestigeStar = document.getElementById(`Prestige${index2+1}`);
+  const PrestigeButton = document.getElementById(`prestigebtn${index2+1}`);
+
   ButtonChangeBuyModeText.textContent = "x" + n;
   if(BuyMode ==3){
     ButtonChangeBuyModeText.textContent = "Max";
@@ -156,6 +160,20 @@ function UpgradesUpdate(index, index2, BuyMode){
   moneyPerSecondText.textContent = NumberFormat(moneyPerSecond + 1) + "/s";
   energyPerSecondText.textContent = NumberFormat(energyPerSecond) + "/s";
   waterPerSecondText.textContent = NumberFormat(waterPerSecond) + "/s";
+
+  PrestigeText.textContent = NumberFormatNoDigits(BatimentHabitables[index2][12]);
+
+  PrestigeText.classList.add("PrestigeColor" + BatimentHabitables[index2][12]);
+
+  PrestigeStar.classList.add("star" + BatimentHabitables[index2][12]);
+
+  if(BatimentHabitables[index2][11] <= BatimentHabitables[index2][7]){
+      PrestigeButton.classList.remove("disabled");
+  }
+  else{
+    PrestigeButton.classList.add("disabled");
+  }
+
 
   if(BatimentHabitables[index2][7] == 0){
     ProductionMilestoneText.textContent = milestone[0];
@@ -201,9 +219,7 @@ function buyUpgrades(index, index2, BuyMode, nbRepetition) {
       if(BatimentHabitables[index2][0] >= milestone[BatimentHabitables[index2][7]]){
         BatimentHabitables[index2][7]++; //milestone_number[index]++
         BatimentHabitables[index2][9] -= BatimentHabitables[index2][10];
-        console.log("Avant nouvelle atribution: " + BatimentHabitables[index2][10]);
         BatimentHabitables[index2][10] = milestone[BatimentHabitables[index2][7]] - milestone[BatimentHabitables[index2][7] -1];
-        console.log("Apres nouvelle atribution: " + BatimentHabitables[index2][10]);
       }
     }
     
@@ -223,6 +239,15 @@ function buyUpgrades(index, index2, BuyMode, nbRepetition) {
   }
 }
 
+
+function Prestige(index, index2){
+    if(BatimentHabitables[index2][11] <= BatimentHabitables[index2][7]){
+      BatimentHabitables[index2][11] ++;
+      BatimentHabitables[index2][12]++;
+    }
+    else{
+    }
+}
 console.log(BatimentHabitables[0][0]);
 /**function CheckAvailablity(){
   let allTrue = true;
