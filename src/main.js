@@ -65,7 +65,6 @@ function ChangeBuyMode(){
     if(BuyMode == 4){
         BuyMode = 0;
     }
-    console.log(BuyMode);
     for(let i = 0; i < BatimentHabitables.length; i++){
         for(let j = 0; j < 2; j++){
           UpgradesUpdate(i, j, BuyMode);
