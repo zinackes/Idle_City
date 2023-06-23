@@ -53,9 +53,11 @@ let HouseNameList = ["Tiny House", "Mobil-Home", "Kit House", "City House"
 //7 = Milestone du batiment ( 25 , 50 etc)
 //8 = Max milestone affiché 
 //9 = xp milestone bar
-// 10 = xp max bar non affiché utilisé pour le calcul
-let Maisons = [0, 500000, 1.03, 5, 1.1, 15, 1.07, 0, 0, 0, 25];
-let ImmeublePetit = [0, 10000000, 1.03, 30, 1.2, 80, 1.1, 0, 0, 0, 25];
+//10 = xp max bar non affiché utilisé pour le calcul
+//11 = [7] requis pour prestige
+//12 = Prestige
+let Maisons = [0, 500000, 1.03, 5, 1.1, 15, 1.07, 0, 0, 0, 25, 2, 0];
+let ImmeublePetit = [0, 10000000, 1.03, 30, 1.2, 80, 1.1, 0, 0, 0, 25, 2, 0];
 
 let BatimentHabitables = [ Maisons, ImmeublePetit];
 
