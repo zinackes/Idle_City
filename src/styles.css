@@ -1,7 +1,8 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Barlow", sans-serif;
+    letter-spacing: 0.025rem;
 }
 body{
     color: var(--white);    
@@ -368,11 +369,52 @@ main{
     border-radius: 6px;
     border: none;
     transition: all .4s ease-in-out;
+    border: 1px solid #00f500;
 }
 .content button:hover{
     transition: all .4s ease-in-out;
     background-color: var(--blue);
+    border: 1px solid #00f500;
 }
+
+.prestige{
+    position: initial !important; 
+    max-width: 80px;
+    font-size: 11px;
+    margin-top: 10px;
+    margin-left: 29%;
+}
+
+.four-point-star::after,
+.four-point-star::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "\2726";
+    font-size: 1.5rem;
+    transition: all .3s ease-in-out;
+}
+
+.four-point-star::after { /* The foreground star */
+    background: linear-gradient(135deg, rgb(135, 134, 147) 20%, #dbdce4 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;   
+}
+
+.four-point-star::before { /* The star shadow */
+    color: transparent;
+    text-shadow: 2px 3px 10px #9b9292;
+}
+
+
+.four-point-star {
+    position: relative;
+    width: 20px;
+    height: 19px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
 
 .map{
     position: relative;
@@ -413,4 +455,13 @@ main{
 
 .active{
     display: flex;
+}
+
+.disabled{
+    cursor: not-allowed !important;
+    border: 1px solid #B9121B !important;
+}
+.content .disabled:hover{
+    background-color: var(--DarkBlue-900) !important;
+    border: 1px solid #B9121B !important;
 }
