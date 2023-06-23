@@ -1,0 +1,36 @@
+:root{
+    --text-1-shadow-color: #9b9191;
+    --text-2-shadow-color: #c4d158;
+
+    --bg-1: linear-gradient(125deg, #878692 10%, #dbdce4 70%);
+    --bg-2:linear-gradient(125deg, #c8d911 10%, #cad649 70%);
+}
+
+
+.star1::before{
+    text-shadow: 1px 2px 10px var(--text-1-shadow-color);
+    color: transparent;
+}
+.star1::after{
+    background: var(--bg-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.PrestigeColor1{
+    color: var(--text-1-shadow-color);
+}
+
+.star2::before{
+    text-shadow: 1px 2px 10px var(--text-2-shadow-color);
+    color: transparent;
+}
+.star2::after{
+    background: var(--bg-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.PrestigeColor2{
+    color: var(--text-2-shadow-color);
+}
