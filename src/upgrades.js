@@ -208,7 +208,7 @@ for(let i = 0; i < BatimentHabitables.length; i++){
 function buyUpgrades(index, index2, BuyMode, nbRepetition) {
   UpgradesUpdate(index, index2, BuyMode);
   if (money >= cost && energyPerSecond >= costEnergy) {
-    BatimentHabitables[index2][0] += n; // mettre à jour la quantité 
+    BatimentHabitables[index2][0] += n; // mettre à jour la quantité
     money -= cost; // soustraire le coût total de l'argent disponible
     energyPerSecond -= costEnergy;
 
