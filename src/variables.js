@@ -22,7 +22,7 @@ let milestone = [25, 50, 100, 200];
 
 let NotationIndex = 0;
 
-//------------------------------Batiments-----------------------------------------
+//------------------------------Batiments Habitables-----------------------------------------
 
 // 0 = nb de travailleur
 // 1 = nb de non travailleur
@@ -63,7 +63,22 @@ let BatimentHabitables = [ Maisons, ImmeublePetit];
 
 
 
+//------------------------------Batiment Energetique-----------------------------------------
 
+//0 = nb de maisons
+//1 = prix en argent
+//2 = Multiplicateur du prix argent
+//3 = Energie produit par seconde 
+//4 = Milestone du batiment ( 25 , 50 etc)
+//5 = Max milestone affiché 
+//6 = xp milestone bar
+//7 = xp max bar non affiché utilisé pour le calcul
+//8 = [7] requis pour prestige
+//9 = Prestige
+//10 = Multiplicateur d'argent pour les maisons par habitant
+let Eolienne = [0, 10000, 1.05, 15, 0, 0, 0, 0, 1, 0, 1];
+
+let BatimentEnergie = [ Eolienne];
 
 
 //------------------------------Affichage des chiffres-----------------------------------------
