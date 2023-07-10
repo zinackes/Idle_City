@@ -1,0 +1,30 @@
+@media screen and (max-width:1660px){
+    .left-content .flexbox{
+        width: 45%;
+    }
+    
+    .pos1{
+        top: 0%;
+        left: 63%;
+        transform: translate(-50%, -50%);
+        animation: float 4.2s ease infinite;
+    }
+    .pos2{
+        top: 25%;
+        left: -14%;
+        transform: translate(-50%, -50%);
+        animation: float 4.6s ease infinite;
+    }
+    .pos3{
+        top: 10%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        animation: float 5.1s ease infinite;
+    }
+    .pos4{
+        top: 20%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        animation: float 5.5s ease infinite;
+    }
+}
