@@ -91,6 +91,8 @@ function generateRandomNumber(UpgradeIndex) {
 }
 
 
+const BuyModetext = document.getElementById("ChangeBuyMode");
+
 function UpgradesUpdate(index, index2, BuyMode){
   k = BatimentHabitables[index2][0]; // niveau actuel de l'amélioration
   b = BatimentHabitables[index2][1]; // prix de base de l'amélioration
@@ -102,16 +104,20 @@ function UpgradesUpdate(index, index2, BuyMode){
   switch (BuyMode) {
     default:
       n = 1; //x1
+      BuyModetext.textContent = "x" + n;
       break;
     case 1: // x10
       n = 10;
+      BuyModetext.textContent = "x" + n;
       break;
     case 2: // x100
       n = 100;
+      BuyModetext.textContent = "x" + n;
       break;
     case 3: // achat maximum possible
       c = money; // argent disponible pour les achats
       n = Math.floor(Math.log(c * (r - 1) / (b * Math.pow(r, k)) + 1) / Math.log(r)); // quantité maximale d'améliorations pouvant être achetées avec l'argent disponible
+      BuyModetext.textContent = "Max";
   }
   cost = b * (Math.pow(r, k) * (Math.pow(r, n) - 1) / (r - 1)); // coût total pour acheter la quantité d'améliorations calculée
   costEnergy = bEnergy * (Math.pow(rEnergy, k) * (Math.pow(rEnergy, n ) - 1) / (rEnergy - 1));
@@ -137,13 +143,13 @@ function UpgradesUpdate(index, index2, BuyMode){
   const PrestigeText = document.getElementById(`PrestigeText${index2+1}`);
   const PrestigeStar = document.getElementById(`Prestige${index2+1}`);
   const PrestigeButton = document.getElementById(`prestigebtn${index2+1}`);
+  const PrestigeButtonAll = document.getElementById(`BuildingBuyButtonAll${index2+1}`);
+  const PrestigeReq = document.getElementById(`PrestigeReqText${index2+1}`);
+  const PrestigeBonus = document.getElementById(`PrestigeBonusText${index2+1}`);
+  
 
-  ButtonChangeBuyModeText.textContent = "x" + n;
-  if(BuyMode ==3){
-    ButtonChangeBuyModeText.textContent = "Max";
-  }
 
-  ProductionBoostText.textContent = "+ " + NumberFormat(PopulationGained[index2]);
+  ProductionBoostText.textContent = NumberFormat(PopulationGained[index2]);
   ProductionCostText.textContent = NumberFormat(cost);
   ProductionCostEnergyText.textContent = NumberFormat(costEnergy) + "/s";
   ProductionQuantityText.textContent = NumberFormatNoDigits(BatimentHabitables[index2][0]);
@@ -162,24 +168,17 @@ function UpgradesUpdate(index, index2, BuyMode){
   waterPerSecondText.textContent = NumberFormat(waterPerSecond) + "/s";
 
   PrestigeText.textContent = NumberFormatNoDigits(BatimentHabitables[index2][12]);
+  PrestigeReq.textContent = NumberFormatNoDigits(milestone[BatimentHabitables[index2][11]]);
+  PrestigeBonus.textContent = NumberFormatNoDigits(BatimentHabitables[index2][11]*10);
 
-  PrestigeText.classList.add("PrestigeColor" + BatimentHabitables[index2][12]);
 
-  PrestigeStar.classList.add("star" + BatimentHabitables[index2][12]);
 
-  if(BatimentHabitables[index2][11] <= BatimentHabitables[index2][7]){
-      PrestigeButton.classList.remove("disabled");
-  }
-  else{
-    PrestigeButton.classList.add("disabled");
-  }
 
 
   if(BatimentHabitables[index2][7] == 0){
     ProductionMilestoneText.textContent = milestone[0];
     BatimentHabitables[index2][10] = milestone[0];
   }
-  HouseText.textContent = HouseNameList[BatimentHabitables[0][7]];
   milestonebar.style.width = ((BatimentHabitables[0][9]/BatimentHabitables[0][10])*100) + "%";
 
 
@@ -244,6 +243,26 @@ function Prestige(index, index2){
     if(BatimentHabitables[index2][11] <= BatimentHabitables[index2][7]){
       BatimentHabitables[index2][11] ++;
       BatimentHabitables[index2][12]++;
+      AllPopulations[index2][0] = 0;
+      AllPopulations[index2][1] = 0;
+      AllPopulations[index2][2] = 0;
+      AllPopulations[index2][3] = 0;
+      AllPopulations[index2][4] = 0;
+      MoneyGainPerPeople[index2] *= 1.10;
+      const Name = document.getElementById(`Name${index2+1}`);
+      const PrestigeCount = document.getElementById(`PrestigeCount${index2+1}`);
+      const PrestigeBtnBg = document.getElementById(`PrestigeBtnBg${index2+1}`);
+      Name.classList.add(`P${BatimentHabitables[index2][12]}`);
+      PrestigeCount.classList.add(`P${BatimentHabitables[index2][12]}Text`);
+      PrestigeBtnBg.classList.add(`P${BatimentHabitables[index2][12]}`);
+      UpgradesUpdate(index, index2);
+      moneyPerSecond = 0;
+      for(let i = 0; i < MoneyGainPerPeople.length; i++){
+        moneyPerSecond += AllPopulations[i][4] * MoneyGainPerPeople[i];
+      }
+      moneyPerSecondText.textContent = NumberFormat(moneyPerSecond + 1) + "/s";
+      energyPerSecondText.textContent = NumberFormat(energyPerSecond) + "/s";
+      waterPerSecondText.textContent = NumberFormat(waterPerSecond) + "/s";
     }
     else{
     }
