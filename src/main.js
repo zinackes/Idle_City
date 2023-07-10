@@ -1,17 +1,20 @@
-Array.from(row_group.children).forEach(function(row){
-  row.addEventListener("click", function() {
-    
-    let position = Array.from(row_group.children).indexOf(this) +1;
-    
-    const AllMenu = document.querySelectorAll(".main-content > div")
-    const menu = document.querySelector(".main-content > div:nth-child(" + position + ")");
+const submenus = document.querySelectorAll(".sub-menu");
 
-    for(let i =0; i < AllMenu.length; i++){
-        AllMenu[i].classList.remove("active");
-    }
-    menu.classList.toggle("active");
+submenus.forEach(function (submenu) {
+  const paragraphs = submenu.querySelectorAll("p");
+
+  paragraphs.forEach(function (paragraph) {
+    paragraph.addEventListener("click", function () {
+      let navbar = this.closest(".navbar");
+      let position = Array.from(navbar.querySelectorAll("p")).indexOf(this);
+      
+      swiper.slideTo(position, 300, true);
+    });
   });
 });
+
+
+
 
 
 
