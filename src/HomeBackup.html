@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stars.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&family=Roboto&family=Sofia+Sans&display=swap" rel="stylesheet">
+    <title>Space</title>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/money.png" alt="" class="money-img">
+                        <h1><span id="money-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/money.png" alt="">
+                    <p><span id="moneyPerSecond-text">19/s</span></p>
+                </div>
+            </div>
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/energy.png" alt="" class="energy-img">
+                        <h1><span id="energy-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/energy.png" alt="">
+                    <p><span id="energyPerSecond-text">1/s</span></p>
+                </div>
+            </div>
+            <div class="economy">
+                <div class="economyTag">
+                    <div class="row-display">
+                        <img src="../assets/icons/water.png" alt="" class="water-img">
+                        <h1><span id="water-text"></span></h1>
+                    </div>
+                </div>
+                <div class="row-display">
+                    <img src="../assets/icons/water.png" alt="">
+                    <p><span id="waterPerSecond-text">1/s</span></p>
+                </div>
+            </div>
+            <div class="progressBarTag">
+                <div class="progressBar">
+
+                </div>
+                <div class="row-display">
+                    <h4><span id="">80%</span></h4>
+                </div>
+            </div>
+        </div>
+        <button onclick="ChangeBuyMode()" id="ButtonChangeBuyModeText">change buy mode</button>
+        <button onclick="Reset()">Reset</button>
+    </header>
+
+    <main>
+        <div class="left-content">
+            <div class="col">
+                <div class="col-name">
+                    <p>Population</p>
+                </div>
+                <div class="row-group">
+                    <div class="row-display">
+                        <img src="../assets/icons/building.png" alt="">
+                        <p class="row">Buildings</p>
+                    </div>
+                    <div class="row-display">
+                        <img src="../assets/icons/centrale-electrique.png" alt="">
+                        <p class="row">Energy</p>
+                    </div>
+                    <div class="row-display">
+                        <img src="../assets/icons/venus.png" alt="">
+                        <p class="row">City map</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-name">
+                    <p>REfining</p>
+                </div>
+                <div class="row-group">
+                    <div class="row-display">
+                        <img src="../assets/icons/earth-globe.png" alt="">
+                        <p class="row">Metal</p>
+                    </div>
+                    <div class="row-display">
+                        <img src="../assets/icons/mars.png" alt="">
+                        <p class="row">Mars</p>
+                    </div>
+                    <div class="row-display">
+                        <img src="../assets/icons/venus.png" alt="">
+                        <p class="row">Venus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="menu">
+                <div class="info">
+                    <h1>Habitations</h1>
+                </div>
+                <div class="list">
+                    <div class="ContainerUpgrades">
+                        <div class="content">
+                            <div class="contentMilestoneBar">
+                                <div class="milestoneBar" id="milestoneBar1"></div>
+                            </div>
+                            <div class="contentTitle">
+                                <h2 id="HouseText">House</h2>
+                                <p>The wood is the most common </p>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Informations</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/house.png" alt="">
+                                            <h5>Quantity</h5>
+                                        </div>
+                                        <p><span id="ProductionQuantity1"></span>/ <span id="ProductionMilestone1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <div class="four-point-star" id="Prestige1"></div>
+                                            <h5>Prestige</h5>
+                                        </div>
+                                        <p id="PrestigeText1"></p>
+                                    </div>
+                                    <button class="prestige" id="prestigebtn1" onclick="Prestige(0, 0)">Prestige</button>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <h5>Money/Hab</h5>
+                                        </div>
+                                        <p id="">5K</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                    <div class="tag">Population</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/adult.png" alt="">
+                                            <h5>Adult</h5>
+                                        </div>
+                                        <p><span id="AdultText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Worker</h5>
+                                        </div>
+                                        <p><span id="WorkerText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Unemployed</h5>
+                                        </div>
+                                        <p><span id="UnemployedText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Retired</h5>
+                                        </div>
+                                        <p><span id="RetiredText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Child</h5>
+                                        </div>
+                                        <p><span id="ChildText1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5 style="font-size: 0.85rem; color: #cbe6ff;">Total</h5>
+                                        </div>
+                                        <p style="font-size: 14px; color: #cbe6ff;"><span id="TotalPop1"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                     <div class="tag">Production</div>
+                                     <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/peoples.png" alt="">
+                                            <h5>Citizens</h5>
+                                        </div>
+                                        <p><span id="ProductionBoost1" class="green"></span></p>
+                                    </div>
+                                </div>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Cost</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/money.png" alt="">
+                                            <h5>Money</h5>
+                                        </div>
+                                        <p id="nbr"><span id="ProductionCost1"></span></p>
+                                     </div>
+                                     <div class="display">
+                                         <div class="row-display">
+                                             <img src="../assets/icons/energy.png" alt="">
+                                             <h5>Energy</h5>
+                                         </div>
+                                         <p><span id="ProductionCostEnergy1"></span></p>
+                                      </div>
+                                      <div class="display">
+                                          <div class="row-display">
+                                              <img src="../assets/icons/water.png" alt="">
+                                              <h5>Water</h5>
+                                          </div>
+                                          <p><span id="ProductionCostWater1"></span></p>
+                                       </div>
+                                </div>
+                            </div>
+                            <button onclick="Buy(0, 0, 1)" id="BuildingBuyButton1" class="BuyButton">Buy</button>
+                        </div>
+                        <div class="content">
+                            <div class="contentTitle">
+                                <h2>Building</h2>
+                                <p>The wood is a common </p>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Informations</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/boxes.png" alt="">
+                                            <h5>Quantity</h5>
+                                        </div>
+                                        <p><span id="ProductionQuantity2"></span>/ <span id="ProductionMilestone2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <div class="four-point-star" id="Prestige2"></div>
+                                            <h5>Prestige</h5>
+                                        </div>
+                                        <p id="PrestigeText2"></p>
+                                    </div>
+                                    <button class="prestige" id="prestigebtn2" onclick="Prestige(0, 0)">Prestige</button>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                    <div class="tag">Population</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Adult</h5>
+                                        </div>
+                                        <p><span id="AdultText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Worker</h5>
+                                        </div>
+                                        <p><span id="WorkerText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Unemployed</h5>
+                                        </div>
+                                        <p><span id="UnemployedText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display-sous-categorie">
+                                            <img src="" alt="">
+                                            <h5>Retired</h5>
+                                        </div>
+                                        <p><span id="RetiredText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5>Child</h5>
+                                        </div>
+                                        <p><span id="ChildText2"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="" alt="">
+                                            <h5 style="font-size: 0.85rem;">Total</h5>
+                                        </div>
+                                        <p style="font-size: 14px;"><span id="TotalPop2"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                     <div class="tag">Production</div>
+                                     <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/peoples.png" alt="">
+                                            <h5>Citizens</h5>
+                                        </div>
+                                        <p><span id="ProductionBoost2" class="green"></span></p>
+                                    </div>
+                                </div>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Cost</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/money.png" alt="">
+                                            <h5>Money</h5>
+                                        </div>
+                                        <p><span id="ProductionCost2"></span></p>
+                                     </div>
+                                     <div class="display">
+                                         <div class="row-display">
+                                             <img src="../assets/icons/energy.png" alt="">
+                                             <h5>Energy</h5>
+                                         </div>
+                                         <p><span id="ProductionCostEnergy2"></span></p>
+                                      </div>
+                                </div>
+                            </div>
+                            <button onclick="Buy(0, 1, 20)" id="BuildingBuyButton2">Buy</button>
+                        </div>
+                    </div>
+                    <div class="ContainerOther">
+                        <div class="content">
+                            <div class="contentTitle">
+                                <h2>Storage</h2>
+                                <p>The storage is used</p>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Informations</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/entrepot.png" alt="">
+                                            <h5>Level</h5>
+                                        </div>
+                                        <p><span id="StorageLevel1"></span></p>
+                                    </div>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Storage details</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/entrepot.png" alt="">
+                                            <h5>Capacity</h5>
+                                        </div>
+                                        <p><span id="StoragePlanet1"></span> / <span>150</span></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="contentProgressBar">
+                                        <div class="progressbar" id="ProgressBar1"></div>
+                                        <div class="progressbar" id="ProgressBar2"></div>
+                                        <div class="progressbar" id="ProgressBar3"></div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                     <div class="tag">Production</div>
+                                     <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/wood.png" alt="">
+                                            <h5>Stone</h5>
+                                        </div>
+                                        <p><span id="ProductionBoost2" class="green"></span> /s</p>
+                                    </div>
+                                </div>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Cost</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/money.png" alt="">
+                                            <h5>Money</h5>
+                                        </div>
+                                        <p><span id="ProductionCost2"></span></p>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="info">
+                    <h1>Energy</h1>
+                </div>
+                <div class="list">
+                    <div class="ContainerUpgrades">
+                        <div class="content smallContent">
+                            <div class="contentMilestoneBar">
+                                <div class="milestoneBar" id="milestoneBar1"></div>
+                            </div>
+                            <div class="contentTitle">
+                                <h2 id="HouseText">Small Energy</h2>
+                                <p></p>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Informations</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/house.png" alt="">
+                                            <h5>Quantity</h5>
+                                        </div>
+                                        <p><span id="EnergyProductionQuantity1"></span>/ <span id="EnergyProductionMilestone1"></span></p>
+                                    </div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <div class="four-point-star" id="Prestige1"></div>
+                                            <h5>Prestige</h5>
+                                        </div>
+                                        <p id="EnergyPrestigeText1"></p>
+                                    </div>
+                                    <button class="prestige" id="prestigebtn1" onclick="Prestige(0, 0)">Prestige</button>
+                                </div>
+                            </div>
+                            <div class="contentBox">
+                                <div class="contentBoxElement">
+                                     <div class="tag">Production</div>
+                                     <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/energy.png" alt="">
+                                            <h5>Energy</h5>
+                                        </div>
+                                        <p><span id="EnergyProduction1" class="green"></span></p>
+                                    </div>
+                                </div>
+                                <div class="contentBoxElement">
+                                    <div class="tag">Cost</div>
+                                    <div class="display">
+                                        <div class="row-display">
+                                            <img src="../assets/icons/money.png" alt="">
+                                            <h5>Money</h5>
+                                        </div>
+                                        <p id="nbr"><span id="ProductionCost1"></span></p>
+                                     </div>
+                                     <div class="display">
+                                         <div class="row-display">
+                                             <img src="../assets/icons/energy.png" alt="">
+                                             <h5>Energy</h5>
+                                         </div>
+                                         <p><span id="ProductionCostEnergy1"></span></p>
+                                      </div>
+                                      <div class="display">
+                                          <div class="row-display">
+                                              <img src="../assets/icons/water.png" alt="">
+                                              <h5>Water</h5>
+                                          </div>
+                                          <p><span id="ProductionCostWater1"></span></p>
+                                       </div>
+                                </div>
+                            </div>
+                            <button onclick="Buy(0, 0, 1)" id="BuildingBuyButton1" class="BuyButton">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu active">
+                <div class="map">
+                    <img src="../assets/images/MapChart_Map.png" alt="">
+                    <div class="waypoint france">
+                        <div class="waypointtext">
+                            <span>ratio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+</body>
+    <script src="variables.js" type="text/javascript"></script>
+    <script src="SaveLoad.js" type="text/javascript"></script>
+    <script src="notation.js" type="text/javascript"></script>
+    <script src="upgrades.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+</html>
