@@ -21,8 +21,8 @@ body{
     --img-money: 25px;
     --img-energy: 21px;
     --img-water: 19px;
-    --green: #059c05;
-    --red: #B9121B;
+    --green: #26c226;
+    --red: #c43b42;
 }
 
 header{
@@ -193,7 +193,7 @@ main{
 
 .left-content, .right-content{
     background: #913F0D;
-    background: linear-gradient(135deg, rgba(182, 145, 107, 0.2), rgb(224, 188, 152, 0.2));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgb(224, 188, 152, 0.1));
     width: 31%;
     padding: 40px;
 }
@@ -212,11 +212,15 @@ main{
     text-transform: uppercase;
     background-image: linear-gradient(90deg, rgba(237,230,238,1) 0%, rgba(203,230,255,1) 100%);
 }
+.left-content h1:hover{
+    text-shadow: rgba(203,230,255,1) 0.4rem 0.4rem;
+}
 .TextGradient{
     background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(90deg, rgba(237,230,238,1) 0%, rgba(203,230,255,1) 100%);
 }
 .left-content p{
     font-family: "Poppins";
@@ -254,7 +258,7 @@ h2{
     justify-content: end;
     width: 200px;
     height: 125px;
-    background-color: #735334;
+    background: rgb(45, 22, 102, 0.9);
     padding: 7px 0px 7px 13px;
     position: relative;
 }
@@ -266,7 +270,7 @@ h2{
     border-radius: 17px;
     display: flex;
     justify-content: end;
-    background-color: #735334;
+    background: rgb(45, 22, 102, 0.9);
     padding: 7px 0px 7px 13px;
 }
 
@@ -328,7 +332,7 @@ h2{
     height: 100%;
     z-index: 2;
     border-radius: 17px;
-    background-color: rgb(78, 51, 26, 0.8);
+    background-color: #472a8b;
 }
 
 .middle-content{
@@ -339,9 +343,11 @@ h2{
 .middle-content .floater{
     animation: float 3s infinite;
     filter: drop-shadow(0 0 2rem #1a1a1a);
-
 }
 
+.prodimg{
+    width: 25px;
+}
 
 .buyHouse{
     background-color: #735334;
@@ -370,12 +376,12 @@ h2{
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
-    background-color: rgb(78, 51, 26, 0.5);
+    background: linear-gradient(135deg, rgb(188, 27, 130), rgb(255, 130, 98));
     border-radius: 15px;
     cursor: pointer;
     width: 70px;
     display: flex;
-    box-shadow: 0 0 15px 2px rgb(78, 51, 26);
+    box-shadow: 0 0 15px 2px #FE5141;
 }
 .btn-pos:hover{
     width: 200px;
@@ -397,6 +403,7 @@ h2{
     background: transparent;
     border: none;
     opacity: 0;
+    color: rgb(219, 238, 255);
     transition: opacity .3s ease;
     transition-delay: .1.5s;
     margin-left: 35px;
@@ -411,18 +418,19 @@ h2{
     transform: scale(.9);
 }
 .secondbuy{
-    background: linear-gradient(90deg, rgba(237,230,238,1), transparent) rgba(203,230,255,1);
+    background: linear-gradient(135deg, #2D1666, transparent), #4E3094;
     border-radius: 15px;
     width: 150px;
     display: flex;
     align-items: center;
     margin-top: 100px;
+    color: rgb(219, 238, 255);
     cursor: pointer;
-    box-shadow: 0 0 14px 2px rgba(237,230,238,1);
+    box-shadow: 0 0 14px 2px #2D1666;
 }
 .secondbuy:hover{
-    box-shadow: 0 0 18px 2px rgba(203,230,255,1);
-    background-color: #86c2b2;
+    box-shadow: 0 0 18px 2px #bd3c8e;
+    background-color: rgb(254, 81, 65, 0.8);
 }
 .secondbuy h4{
     margin-left: 30px;
@@ -438,7 +446,7 @@ h2{
 .vertical-sep{
     height: 50px;
     width: 2px;
-    background: rgb(26, 26, 26, 0.5);
+    background:rgb(219, 238, 255, 0.4);
 }
 
 @keyframes float{
