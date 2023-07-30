@@ -50,7 +50,7 @@ function MoneyGen() {
   animateNumber(startTime, energy - energyPerSecond, energy, energy_text);
   animateNumber(startTime, water - waterPerSecond, water, water_text);
 
-  for (let i = 0; i < BatimentHabitables.length; i++) {
+  for (let i = 0; i < Batiments.length; i++) {
     for (let j = 0; j < 2; j++) {
       UpgradesUpdate(i, j, BuyMode);
     }
@@ -68,7 +68,7 @@ function ChangeBuyMode(){
     if(BuyMode == 4){
         BuyMode = 0;
     }
-    for(let i = 0; i < BatimentHabitables.length; i++){
+    for(let i = 0; i < Batiments.length; i++){
         for(let j = 0; j < 2; j++){
           UpgradesUpdate(i, j, BuyMode);
         }
