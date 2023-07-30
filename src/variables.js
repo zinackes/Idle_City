@@ -16,7 +16,7 @@ let moneyPerSecond = 1;
 let energyPerSecond = 10000;
 let water = 0;
 let waterPerSecond = 1;
-let MoneyGainPerPeople = [5000, 1250]; 
+let MoneyGainPerPeople = [5000, 1250, 1500]; 
 
 let milestone = [25, 50, 100, 200];
 
@@ -31,15 +31,15 @@ let NotationIndex = 0;
 // 4 = population totale
 let PopulationsHouse = [0, 0, 0, 0, 0];
 let PopulationsPetitImmeuble = [0, 0, 0, 0, 0];
+let PopulationsMoyenImmeuble = [0, 0, 0, 0, 0];
 
-let AllPopulations = [PopulationsHouse, PopulationsPetitImmeuble];
+let AllPopulations = [PopulationsHouse, PopulationsPetitImmeuble, PopulationsMoyenImmeuble];
 
 
 // 0 = Pop gagné par maison acheté
-let PopulationGained = ["1-8", "20-100", "35-175", "60-300", "100-500", "200-1K"];
+let Gain = ["1-8", "20-100", "35-175", "10",
+"60-300", "100-500", "200-1K"];
 
-let HouseNameList = ["Tiny House", "Mobil-Home", "Kit House", "City House"
-, "Colonial House"];
 
 
 //0 = nb de maisons
@@ -58,14 +58,38 @@ let HouseNameList = ["Tiny House", "Mobil-Home", "Kit House", "City House"
 //13 = Multiplicateur d'argent pour les maisons par habitant
 let Maisons = [0, 500000, 1.03, 5, 1.1, 15, 1.07, 0, 0, 0, 25, 1, 0, 1];
 let ImmeublePetit = [0, 10000000, 1.03, 30, 1.2, 80, 1.1, 0, 0, 0, 25, 1, 0, 1];
+let ImmeubleMoyen = [0, 25000000, 1.025, 150, 1.29, 400, 1.19, 0, 0, 0, 25, 1, 0, 1];
 
-let BatimentHabitables = [ Maisons, ImmeublePetit];
-
-
-
+//INDEX 2 = Positio  de la liste du batiment ici
 
 
 
+//------------------------------Energie-----------------------------------------
+
+
+//0 = nombres
+//1 = prix en argent
+//2 = Multiplicateur du prix argent
+//3 = prix en energie
+//4 = Multiplicateur du prix energie
+//5 = prix en eau
+//6 = Multiplicateur du prix eau
+//7 = Milestone du batiment ( 25 , 50 etc)
+//8 = Max milestone affiché 
+//9 = xp milestone bar
+//10 = xp max bar non affiché utilisé pour le calcul
+//11 = [7] requis pour prestige
+//12 = Prestige
+//13 = Multiplicateur d'argent pour les maisons par habitant
+let Eolienne = [0, 100000, 1.2, 0, 0, 0, 0, 0, 0, 0, 25, 1, 0, 1];
+
+//INDEX 2 = Position de la liste du batiment ici
+
+
+
+
+let Batiments = [ Maisons, ImmeublePetit, ImmeubleMoyen, Eolienne];
+//INDEX = Position de la liste de batiment ici
 //------------------------------Affichage des chiffres-----------------------------------------
 
 
