@@ -1,51 +1,41 @@
 :root{
-    --grey: #777b71;
-    --grey-gradient: linear-gradient(135deg, #C4CCD0, #444D5C);
-    --grey-low-opacity-gradient: linear-gradient(315deg, rgba(126, 132, 134, 0.4), rgba(100, 106, 117, 0.4));
-    
-    --grey-lighter: rgb(180, 180, 185);
-    --grey-lighter-gradient: linear-gradient(135deg, rgb(187, 188, 196), rgb(132, 132, 136));
-
-    --blue: rgb(21, 127, 189);
-    --blue-gradient: linear-gradient(135deg, rgb(28, 171, 252), rgb(99, 117, 217));
-    --blue-low-opacity-gradient: linear-gradient(315deg, rgb(28, 171, 252, 0.4), rgb(106, 190, 251, 0.4));
-
     --P1: linear-gradient(90deg, rgb(222, 165, 229) 0%, rgb(160, 209, 255)100%);
-}
-
-
-.grey{
-    background-color: var(--grey) !important;
-}
-
-.grey-bg{
-    background: var(--grey-gradient) !important;
-}
-
-.grey-bg-low-opacity{
-    background: var(--grey-low-opacity-gradient) !important;
-}
-
-.grey-lighter{
-    background-color: var(--grey-lighter) !important;
-}
-.grey-lighter-bg{
-    background: var(--grey-lighter-gradient) !important;
-}
-
-.blue{
-    background: var(--blue) !important;
-}
-.blue-bg{
-    background: var(--blue-gradient) !important;
-}
-.blue-bg-low-opacity{
-    background: var(--blue-low-opacity-gradient) !important;
 }
 
 .P1{
     background-image: var(--P1) !important;
 }
-.P1Text{
-    color: var();
+
+
+.EnergyGrad{
+    background-image:
+      radial-gradient(ellipse at 10% 90%, #0b2423 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, #02555b 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 10%, #3178fb 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 10%, #008eff 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, #a252f3 0%, transparent 55%) !important;
+}
+
+.EnergyGrad .btn-pos{
+    background: linear-gradient(135deg, #02555b, #a252f3) !important;
+    box-shadow: 0 0 15px 2px #3178fb;
+}
+.EnergyGrad .box, .EnergyGrad .boxbig{
+    background: #008eff;
+}
+.EnergyGrad .box-progress{
+    background: #0061b1;
+}
+.EnergyGrad .secondbuy{
+    background: linear-gradient(135deg, #02555b, transparent),  #008eff;
+}
+.EnergyGrad .secondbuy:hover{
+    background-color: #0fc9c3;
+    box-shadow: 0 0 18px 2px #178b88;
+}
+
+.EnergyGrad .ball{
+    box-shadow: inset 0 0 20px #3178fb, inset 10px 0 46px #3178fb,
+      inset 88px 0px 60px #02555b, inset -20px -60px 100px #a252f3,
+      inset 0 50px 140px #a252f3, 0 0 80px #a252f3;
 }
