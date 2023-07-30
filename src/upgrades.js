@@ -85,7 +85,6 @@ function generateRandomNumber(UpgradeIndex) {
     index -= 2;
     AllPopulations[UpgradeIndex][3] += index;
   }
-  console.log(AllPopulations);
 
   return index; // retourne l'indice de l'élément sélectionné, plus 1 pour obtenir un chiffre entre 1 et 5
 }
@@ -94,13 +93,13 @@ function generateRandomNumber(UpgradeIndex) {
 const BuyModetext = document.getElementById("ChangeBuyMode");
 
 function UpgradesUpdate(index, index2, BuyMode){
-  k = BatimentHabitables[index2][0]; // niveau actuel de l'amélioration
-  b = BatimentHabitables[index2][1]; // prix de base de l'amélioration
-  bEnergy = BatimentHabitables[index2][3]; // prix de base en energie
-  bWater = BatimentHabitables[index2][5];
-  r = BatimentHabitables[index2][2]; // augmentation de prix à chaque achat
-  rEnergy = BatimentHabitables[index2][4]; // augmentation du prix de l'energie
-  rWater = BatimentHabitables[index2][6];
+  k = Batiments[index2][0]; // niveau actuel de l'amélioration
+  b = Batiments[index2][1]; // prix de base de l'amélioration
+  bEnergy = Batiments[index2][3]; // prix de base en energie
+  bWater = Batiments[index2][5];
+  r = Batiments[index2][2]; // augmentation de prix à chaque achat
+  rEnergy = Batiments[index2][4]; // augmentation du prix de l'energie
+  rWater = Batiments[index2][6];
   switch (BuyMode) {
     default:
       n = 1; //x1
@@ -149,11 +148,11 @@ function UpgradesUpdate(index, index2, BuyMode){
   
 
 
-  ProductionBoostText.textContent = NumberFormat(PopulationGained[index2]);
+  ProductionBoostText.textContent = NumberFormat(Gain[index2]);
   ProductionCostText.textContent = NumberFormat(cost);
   ProductionCostEnergyText.textContent = NumberFormat(costEnergy) + "/s";
-  ProductionQuantityText.textContent = NumberFormatNoDigits(BatimentHabitables[index2][0]);
-  ProductionMilestoneText.textContent = NumberFormatNoDigits(milestone[BatimentHabitables[index2][7]]);
+  ProductionQuantityText.textContent = NumberFormatNoDigits(Batiments[index2][0]);
+  ProductionMilestoneText.textContent = NumberFormatNoDigits(milestone[Batiments[index2][7]]);
   BuildingBuyButtonText.textContent = "Buy x" + NumberFormatNoDigits(n);
 
   AdultText.textContent = NumberFormatNoDigits(AllPopulations[index2][0] + AllPopulations[index2][1] + AllPopulations[index2][2]);
@@ -167,19 +166,19 @@ function UpgradesUpdate(index, index2, BuyMode){
   energyPerSecondText.textContent = NumberFormat(energyPerSecond) + "/s";
   waterPerSecondText.textContent = NumberFormat(waterPerSecond) + "/s";
 
-  PrestigeText.textContent = NumberFormatNoDigits(BatimentHabitables[index2][12]);
-  PrestigeReq.textContent = NumberFormatNoDigits(milestone[BatimentHabitables[index2][11]]);
-  PrestigeBonus.textContent = NumberFormatNoDigits(BatimentHabitables[index2][11]*10);
+  PrestigeText.textContent = NumberFormatNoDigits(Batiments[index2][12]);
+  PrestigeReq.textContent = NumberFormatNoDigits(milestone[Batiments[index2][11]]);
+  PrestigeBonus.textContent = NumberFormatNoDigits(Batiments[index2][11]*10);
 
 
 
 
 
-  if(BatimentHabitables[index2][7] == 0){
+  if(Batiments[index2][7] == 0){
     ProductionMilestoneText.textContent = milestone[0];
-    BatimentHabitables[index2][10] = milestone[0];
+    Batiments[index2][10] = milestone[0];
   }
-  milestonebar.style.width = ((BatimentHabitables[0][9]/BatimentHabitables[0][10])*100) + "%";
+  milestonebar.style.width = ((Batiments[0][9]/Batiments[0][10])*100) + "%";
 
 
   if(money >= cost){
@@ -199,26 +198,25 @@ function UpgradesUpdate(index, index2, BuyMode){
 
 
 
-for(let i = 0; i < BatimentHabitables.length; i++){
-  for(let j = 0; j < 2; j++){
+for(let i = 0; i < Batiments.length; i++){
+  for(let j = 0; j < 4; j++){
     UpgradesUpdate(i, j, BuyMode);
   }
 }
-
 function buyUpgrades(index, index2, BuyMode, nbRepetition) {
   UpgradesUpdate(index, index2, BuyMode);
   if (money >= cost && energyPerSecond >= costEnergy) {
-    BatimentHabitables[index2][0] += n; // mettre à jour la quantité 
+    Batiments[index2][0] += n; // mettre à jour la quantité 
     money -= cost; // soustraire le coût total de l'argent disponible
     energyPerSecond -= costEnergy;
 
     
-    BatimentHabitables[index2][9] += n; //  xpmilestone[index]+=n 
+    Batiments[index2][9] += n; //  xpmilestone[index]+=n 
     for(let i = 0; i < milestone.length; i++){
-      if(BatimentHabitables[index2][0] >= milestone[BatimentHabitables[index2][7]]){
-        BatimentHabitables[index2][7]++; //milestone_number[index]++
-        BatimentHabitables[index2][9] -= BatimentHabitables[index2][10];
-        BatimentHabitables[index2][10] = milestone[BatimentHabitables[index2][7]] - milestone[BatimentHabitables[index2][7] -1];
+      if(Batiments[index2][0] >= milestone[Batiments[index2][7]]){
+        Batiments[index2][7]++; //milestone_number[index]++
+        Batiments[index2][9] -= Batiments[index2][10];
+        Batiments[index2][10] = milestone[Batiments[index2][7]] - milestone[Batiments[index2][7] -1];
       }
     }
     
@@ -240,9 +238,9 @@ function buyUpgrades(index, index2, BuyMode, nbRepetition) {
 
 
 function Prestige(index, index2){
-    if(BatimentHabitables[index2][11] <= BatimentHabitables[index2][7]){
-      BatimentHabitables[index2][11] ++;
-      BatimentHabitables[index2][12]++;
+    if(Batiments[index2][11] <= Batiments[index2][7]){
+      Batiments[index2][11] ++;
+      Batiments[index2][12]++;
       AllPopulations[index2][0] = 0;
       AllPopulations[index2][1] = 0;
       AllPopulations[index2][2] = 0;
@@ -251,10 +249,8 @@ function Prestige(index, index2){
       MoneyGainPerPeople[index2] *= 1.10;
       const Name = document.getElementById(`Name${index2+1}`);
       const PrestigeCount = document.getElementById(`PrestigeCount${index2+1}`);
-      const PrestigeBtnBg = document.getElementById(`PrestigeBtnBg${index2+1}`);
-      Name.classList.add(`P${BatimentHabitables[index2][12]}`);
-      PrestigeCount.classList.add(`P${BatimentHabitables[index2][12]}Text`);
-      PrestigeBtnBg.classList.add(`P${BatimentHabitables[index2][12]}`);
+      Name.classList.add(`P${Batiments[index2][12]}`);
+      PrestigeCount.classList.add(`P${Batiments[index2][12]}Text`);
       UpgradesUpdate(index, index2);
       moneyPerSecond = 0;
       for(let i = 0; i < MoneyGainPerPeople.length; i++){
@@ -267,7 +263,6 @@ function Prestige(index, index2){
     else{
     }
 }
-console.log(BatimentHabitables[0][0]);
 /**function CheckAvailablity(){
   let allTrue = true;
   for(let i = 0; i < 1;i++){
