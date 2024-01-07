@@ -1,19 +1,26 @@
-const submenus = document.querySelectorAll(".sub-menu");
+const sideDivs = document.querySelectorAll(".category");
 
-submenus.forEach(function (submenu) {
-  const paragraphs = submenu.querySelectorAll("p");
 
-  paragraphs.forEach(function (paragraph) {
-    paragraph.addEventListener("click", function () {
-      let navbar = this.closest(".navbar");
-      let position = Array.from(navbar.querySelectorAll("p")).indexOf(this);
-      
-      swiper.slideTo(position, 300, true);
+sideDivs.forEach(function (sideDiv) {
+  sideDiv.addEventListener("click", function () {
+    // Récupère l'index du div side cliqué
+    let index = Array.from(sideDivs).indexOf(this);
+    
+    for(let i = 0; i < sideDivs.length; i++){
+      sideDivs[i].classList.remove("side-selected");
+    }
+    sideDiv.classList.add("side-selected");
+
+    // Supprime la classe 'onglet_active' de toutes les divs avec la classe 'onglet'
+    document.querySelectorAll(".onglet").forEach(function (onglet) {
+      onglet.classList.remove("onglet_active");
     });
+
+    // Ajoute la classe 'onglet_active' à la div .onglet correspondante
+    let targetOnglet = document.querySelectorAll(".onglet")[index];
+    targetOnglet.classList.add("onglet_active");
   });
 });
-
-
 
 
 
@@ -41,18 +48,30 @@ function animateNumber(startTime, startValue, targetValue, element) {
 
 
 function MoneyGen() {
-  money += moneyPerSecond + 1;
-  energy += energyPerSecond;
+  money += moneyPerSecond;
+  AllRessources[2] += energyPerSecond;
   water += waterPerSecond;
+  wood += woodPerSecond;
 
   const startTime = Date.now();
-  animateNumber(startTime, money - moneyPerSecond - 1, money, money_text);
-  animateNumber(startTime, energy - energyPerSecond, energy, energy_text);
+  animateNumber(startTime, money - moneyPerSecond-1, money, money_text);
+  animateNumber(startTime, AllRessources[2] - energyPerSecond, AllRessources[2], energy_text);
   animateNumber(startTime, water - waterPerSecond, water, water_text);
+  animateNumber(startTime, AllRessources[0] - woodPerSecond, AllRessources[0], wood_text);
+  animateNumber(startTime, AllRessources[1] - stonePerSecond, AllRessources[1], stone_text);
 
-  for (let i = 0; i < Batiments.length; i++) {
-    for (let j = 0; j < 2; j++) {
-      UpgradesUpdate(i, j, BuyMode);
+  for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
+    MoneyTextUpdate(BuildingIndex);
+  }
+  for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
+    ToolsTextUpdate(ToolsIndex);
+  }
+  for(let index = 0; index < EnergyResearch.length; index++){
+    ResearchTextUpdate(index);
+  }
+  if(EnergyResearch[0][4] == 1){
+    for(let index = 0; index < HabitationEnergyAll.length; index++){
+      EnergyUpdateText(index);
     }
   }
 
@@ -63,17 +82,47 @@ function MoneyGen() {
 
 
 
-function ChangeBuyMode(){
-    BuyMode++;
-    if(BuyMode == 4){
-        BuyMode = 0;
+function ChangeBuyMode(NewBuyMode){
+  BuyMode = NewBuyMode;
+
+  for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
+    MoneyTextUpdate(BuildingIndex);
+  }
+  for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
+    ToolsTextUpdate(ToolsIndex);
     }
-    for(let i = 0; i < Batiments.length; i++){
-        for(let j = 0; j < 2; j++){
-          UpgradesUpdate(i, j, BuyMode);
-        }
-      }
+
 }
+
+
+BuyModeButton = document.querySelectorAll(".buymode > button");
+BuyModeButton.forEach((button) =>{
+  button.addEventListener("click", () =>{
+    for(let i = 0; i < BuyModeButton.length; i++){
+      BuyModeButton[i].classList.remove("btn-active");
+    }
+    button.classList.add("btn-active");
+  })
+})
+
+
+function Redirect(DivId, onglet_active_index){
+
+  for(let i = 0; i < sideDivs.length; i++){
+    sideDivs[i].classList.remove("side-selected");
+  }
+  document.querySelectorAll(".category")[onglet_active_index].classList.add("side-selected");
+
+  document.querySelectorAll(".onglet").forEach(function (onglet) {
+    onglet.classList.remove("onglet_active");
+  });
+  document.querySelectorAll(".onglet")[onglet_active_index].classList.add("onglet_active");
+
+  document.getElementById(DivId).classList.add ("redirect");
+}
+
+
+
 
 function Reset(){
     money = 0;
@@ -84,10 +133,8 @@ function Reset(){
     planetStorages = [[wood[5], stone[5]]];
     mineraiStorage = 0;
     planetStorageSum = 0;
-    for(let i = 0; i < 1;i++){
-        for(let j =0; j < 2;j++){
-            UpgradesUpdate(i, j, BuyMode);
-        }
+    for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
+      MoneyTextUpdate(BuildingIndex);
     }
 }
 
