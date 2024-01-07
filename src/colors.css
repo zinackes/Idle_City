@@ -1,0 +1,56 @@
+:root{
+    --grey: #777b71;
+    --grey-gradient: linear-gradient(135deg, #C4CCD0, #444D5C);
+    --grey-low-opacity-gradient: linear-gradient(315deg, rgba(126, 132, 134, 0.4), rgba(100, 106, 117, 0.4));
+    
+    --grey-lighter: rgb(180, 180, 185);
+    --grey-lighter-gradient: linear-gradient(135deg, rgb(159, 159, 159), rgb(116, 116, 116));
+    --grey-lighter-low-opacity-gradient: linear-gradient(315deg, rgba(124, 124, 124, 0.4),
+     rgb(106, 106, 106, 0.4));
+
+    --blue: rgb(21, 127, 189);
+    --blue-gradient: linear-gradient(135deg, rgb(19, 167, 253), rgb(79, 99, 208));
+    --blue-low-opacity-gradient: linear-gradient(315deg, rgba(26, 167, 248, 0.4), rgba(93, 185, 251, 0.4));
+
+    --P1: linear-gradient(90deg, rgb(222, 165, 229) 0%, rgb(160, 209, 255)100%);
+}
+
+
+.grey{
+    background-color: var(--grey) !important;
+}
+
+.grey-bg{
+    background: var(--grey-gradient) !important;
+}
+
+.grey-bg-low-opacity{
+    background: var(--grey-low-opacity-gradient) !important;
+}
+
+.grey-lighter{
+    background-color: var(--grey-lighter) !important;
+}
+.grey-lighter-bg{
+    background: var(--grey-lighter-gradient) !important;
+}
+.grey-lighter-bg-low-opacity{
+    background: var(--grey-lighter-low-opacity-gradient) !important;
+}
+
+.blue{
+    background: var(--blue) !important;
+}
+.blue-bg{
+    background: var(--blue-gradient) !important;
+}
+.blue-bg-low-opacity{
+    background: var(--blue-low-opacity-gradient) !important;
+}
+
+.P1{
+    background-image: var(--P1) !important;
+}
+.P1Text{
+    color: var();
+}
