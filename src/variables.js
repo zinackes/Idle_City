@@ -44,6 +44,17 @@ let NotationIndex = 0;
 //9 = Mult prix en bois
 //10 = Prix en pierre
 //11 = Mult prix en pierre
+
+let Buildings = {
+    Straw_Hut: {
+        Amount: {Number: 0, id: 'Amount'},
+        Income: {Number: 1, id: 'Income'},
+        Price: {Number: 50, id: 'Price'},
+    }
+}
+
+let BuildingLength = Object.keys(Buildings).length;
+
 let Straw_Hut = [0 /*0*/, 1 /*1*/, 50 /*2*/, 1.03 /*3*/, 0 /*4*/,
  1.1 /*5*/, 0 /*6*/, 1.07 /*7*/, 0 /*8*/, 0 /*9*/, 0 /*10*/, 25 /*11*/];
 

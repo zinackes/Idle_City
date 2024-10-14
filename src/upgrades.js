@@ -110,7 +110,6 @@ function Re_Determine_MaxQuantity(Lowest_Material, Amount, NormalPrice, PriceAug
 }
 
 
-
 function MoneyTextUpdate(BuildingIndex){
 
 
@@ -122,6 +121,7 @@ function MoneyTextUpdate(BuildingIndex){
     HabitationAll[BuildingIndex][11], "stone");
   Determine_N_Price(HabitationAll[BuildingIndex][0], HabitationAll[BuildingIndex][4],
     HabitationAll[BuildingIndex][5], "energy");
+
 
 
   const ProductionBoostText = document.getElementById(`ProductionBoost${BuildingIndex+1}`);
@@ -221,7 +221,7 @@ function UpdateAvailableOrNot(RessourceRequiredText, Ressource, RessourceCost) {
 
 
 for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
-  MoneyTextUpdate(BuildingIndex);
+  //MoneyTextUpdate(BuildingIndex);
 }
 for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
   ToolsTextUpdate(ToolsIndex);

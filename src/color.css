@@ -6,10 +6,6 @@
     --gray: #c2bebb;
 }
 
-.bg_grad_yellow{
-    background: linear-gradient(140deg,
-    rgb(254, 210, 88, 0.95) -156.38%, var(--black) 94.04%) !important;
-}
 
 .filter_yellow{
     filter: invert(79%) sepia(27%) saturate(856%)
@@ -18,14 +14,6 @@
 
 .color_yellow{
     color: var(--yellow) !important;
-}
-
-
-
-
-.bg_grad_blue{
-    background: linear-gradient(140deg,
-    rgb(65, 105, 225, 0.95) -156.38%, var(--black) 94.04%) !important;
 }
 
 .filter_blue{
@@ -37,14 +25,6 @@
     color: var(--royalBlue-400) !important;
 }
 
-
-
-
-.bg_grad_brown{
-    background: linear-gradient(140deg,
-    #a88d4e -156.38%, var(--black) 94.04%) !important;
-}
-
 .filter_brown{
     filter: invert(58%) sepia(15%) saturate(1243%) hue-rotate(4deg)
      brightness(95%) contrast(84%) !important;
@@ -54,13 +34,23 @@
     color: var(--brown) !important;
 }
 
-
-
-
-.bg_grad_gray{
-    background: linear-gradient(140deg,
-    var(--gray) -156.38%, var(--black) 94.04%) !important;
+.bg_beige{
+    background: #CCB69A;
 }
+
+.bg_light-brown{
+    background: #987258;
+}
+
+.bg_brown{
+    background: #6C5035;
+}
+
+.bg_dark_brown{
+    background: #4B372B;
+}
+
+
 
 .filter_gray{
     filter: invert(90%) sepia(8%) saturate(122%) hue-rotate(343deg)

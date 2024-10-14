@@ -53,6 +53,15 @@ function MoneyGen() {
   water += waterPerSecond;
   wood += woodPerSecond;
 
+ // Mise a jour des infos des batiments
+  for(let buildingName in Buildings){
+    for(let buildingComponent in Buildings[buildingName]){
+      id = buildingName + Buildings[buildingName][buildingComponent].id;
+      newTextContent = Buildings[buildingName][buildingComponent].Number;
+      Updatetext(id, newTextContent);
+    }
+  }
+
   const startTime = Date.now();
   animateNumber(startTime, money - moneyPerSecond-1, money, money_text);
   animateNumber(startTime, AllRessources[2] - energyPerSecond, AllRessources[2], energy_text);
@@ -60,9 +69,6 @@ function MoneyGen() {
   animateNumber(startTime, AllRessources[0] - woodPerSecond, AllRessources[0], wood_text);
   animateNumber(startTime, AllRessources[1] - stonePerSecond, AllRessources[1], stone_text);
 
-  for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
-    MoneyTextUpdate(BuildingIndex);
-  }
   for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
     ToolsTextUpdate(ToolsIndex);
   }
