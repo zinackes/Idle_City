@@ -1,6 +1,7 @@
 
-function GainRessources(RessourceIndex){ 
-    AllRessources[RessourceIndex] += AllTools[RessourceIndex][0] * AllTools[RessourceIndex][3];
+function GainRessources(RessourceType, ToolsName){
+    AllRessources[RessourceType] += (Tools[ToolsName][ToolsName].Income * Tools[ToolsName][ToolsName].Amount);
+    Update(UpdateType);
   }
 
 // Exemple: GainRessources(wood, 0) correspond au bois

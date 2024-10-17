@@ -24,7 +24,7 @@
         <div class="top">
             <div class="economy">
                 <img src="/assets/icons/money.svg" alt="">
-                <h1><span id="money-text"></span></h1>
+                <h1><span id="moneyText"></span></h1>
                 <div>
                     <h2 id="moneyPerSecondText"></h2>
                     <h2>/s</h2>
@@ -32,24 +32,30 @@
             </div>
             <div class="economy bg_grad_yellow">
                 <img src="/assets/icons/energy.png" alt="" class="filter_yellow">
-                <h1 class="color_yellow"><span id="energy-text"></span></h1>
+                <h1 class="color_yellow"><span id="energyText"></span></h1>
                 <div>
-                    <h2 id="energyPerSecond-text" class="color_yellow"></h2>
+                    <h2 id="energyPerSecondText" class="color_yellow"></h2>
                     <h2 class="color_yellow" >/s</h2>
                 </div>
             </div>
             <div class="economy bg_grad_blue">
                 <img src="/assets/icons/water.png" alt="" class="filter_blue">
-                <h1 class="color_blue"><span id="water-text"></span></h1>
+                <h1 class="color_blue"><span id="waterText"></span></h1>
+                <div>
+                    <h2 id="waterPerSecondText" class="color_blue"></h2>
+                    <h2 class="color_blue" >/s</h2>
+                </div>
             </div>
             <div class="grid_economy">
                 <div class="economy bg_grad_brown">
                     <img src="/assets/icons/wood.png" alt="" class="filter_brown">
-                    <h1 class="color_brown" id="wood-text"></h1>
+                    <h1 class="color_brown" id="woodText"></h1>
+                    <span id="woodPerSecondText"></span>
                 </div>
                 <div class="economy bg_grad_gray">
                     <img src="/assets/icons/stone.png" alt="" class="filter_gray">
-                    <h1 class="color_gray" id="stone-text"></h1>
+                    <h1 class="color_gray" id="stoneText"></h1>
+                    <span id="stonePerSecondText"></span>
                 </div>
                 <div class="economy">
                     <img src="/assets/icons/water.png" alt="" class="filter_blue">
@@ -115,152 +121,156 @@
 
         </div>
 
-        <div class="game onglet onglet_active">
-            <div >
-                <div class="flex_justify">
-                        <div>
-                            <i class="fa-solid fa-magnifying-glass" style="color: #bcbdbd"></i>
-                            <p>Search for a building</p>
-                        </div>
-                </div>
+        <div class="game onglet" id="Buildings">
+            <div class="flex_align search">
+                <i class="fa-solid fa-magnifying-glass round_brown" style="color: #bcbdbd"></i>
                 <div class="search-bar">
                     <input type="text" id="input-box" placeholder="Search..." class="input" autocomplete="off">
                 </div>
             </div>
-            <div class="flex_small">
-                <div class="col_black col_black_big">
-                    <h1>Building</h1>
-                    <div class="sep_5px"></div>
-                    <h2>Straw Hut</h2>
-                    <div class="sep_3px"></div>
-                    <h2>Small Wooden House</h2>
-                    <div class="sep_3px"></div>
+            <div class="flex_align flex" style="gap: 24px">
+                <div class="flex_small">
+                    <div class="col_black col_black_big">
+                        <h1>Building</h1>
+                        <div class="sep_5px"></div>
+                        <h2>Straw Hut</h2>
+                        <div class="sep_3px"></div>
+                        <h2>Small Wooden House</h2>
+                        <div class="sep_3px"></div>
+                        <h2>Wooden House</h2>
+                        <div class="sep_3px"></div>
+                        <h2>Big Wooden House</h2>
+                        <div class="sep_3px"></div>
+                    </div>
+                    <div class="col_black col_black_small">
+                        <h1>Amount</h1>
+                        <div class="sep_5px"></div>
+                        <h2 id="Straw_HutAmount"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Small_Wooden_HouseAmount"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Wooden_HouseAmount"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Big_Wooden_HouseAmount"></h2>
+                        <div class="sep_3px"></div>
+                    </div>
+                    <div class="col_black col_black_small">
+                        <h1>Income</h1>
+                        <div class="sep_5px"></div>
+                        <h2 id="Straw_HutIncome"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Small_Wooden_HouseIncome"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Wooden_HouseIncome"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Big_Wooden_HouseIncome"></h2>
+                        <div class="sep_3px"></div>
+                    </div>
+                    <div class="col_black col_black_big required">
+                        <h1>Required</h1>
+                        <div class="sep_5px"></div>
+                        <h2>
+                        </h2>
+                        <div class="sep_3px"></div>
+                        <h2>
+                            <span> <img class="filter_brown" src="/assets/icons/wood.png" alt="">
+                                <span id="Small_Wooden_HouseMaxPricewood"></span></span>
+                        </h2>
+                        <div class="sep_3px"></div>
+                        <h2>
+                            <span> <img class="filter_brown" src="/assets/icons/wood.png" alt="">
+                                <span id="Wooden_HouseMaxPricewood"></span></span>
+                        </h2>
+                        <div class="sep_3px"></div>
+                        <h2>
+                            <span> <img class="filter_brown" src="/assets/icons/wood.png" alt="">
+                                <span id="Big_Wooden_HouseMaxPricewood"></span></span>
+                        </h2>
+                        <div class="sep_3px"></div>
+                    </div>
+                    <div class="col_black col_black_small">
+                        <h1>Price</h1>
+                        <div class="sep_5px"></div>
+                        <h2 id="Straw_HutMaxPricemoney"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Small_Wooden_HouseMaxPricemoney"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Wooden_HouseMaxPricemoney"></h2>
+                        <div class="sep_3px"></div>
+                        <h2 id="Big_Wooden_HouseMaxPricemoney"></h2>
+                        <div class="sep_3px"></div>
+
+                        <!-- Ajouter 66px a chaque fois -->
+                        <div class="col_absolute" style="top: 60px">
+                            <div class="relative">
+                                <div class="col bg_beige"></div>
+                            </div>
+                        </div>
+                        <div class="col_absolute " style="top: 126px">
+                            <div class="relative">
+                                <div class="col bg_light-brown"></div>
+                            </div>
+                        </div>
+                        <div class="col_absolute " style="top: 192px">
+                            <div class="relative">
+                                <div class="col bg_brown"></div>
+                            </div>
+                        </div>
+                        <div class="col_absolute " style="top: 258px">
+                            <div class="relative">
+                                <div class="col bg_dark_brown"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col_black col_black_small">
-                    <h1>Amount</h1>
-                    <div class="sep_5px"></div>
-                    <h2 id="Straw_HutAmount"></h2>
-                    <div class="sep_3px"></div>
-                    <h2>Small Wooden House</h2>
-                    <div class="sep_3px"></div>
+                <div class="flex_column flex_btn">
+                    <button class="bg_red" id="Straw_HutButton"
+                            onclick="buyUpgrades('Habitations', 'Straw_Hut', Buildings)">Buy 1</button>
+                    <button class="bg_red"  id="Small_Wooden_HouseButton"
+                            onclick="buyUpgrades('Habitations', 'Small_Wooden_House', Buildings)">Buy 1</button>
+                    <button class="bg_red" id="Wooden_HouseButton"
+                            onclick="buyUpgrades('Habitations', 'Wooden_House', Buildings)">Buy 1</button>
+                    <button class="bg_red"  id="Big_Wooden_HouseButton"
+                            onclick="buyUpgrades('Habitations', 'Big_Wooden_House', Buildings)">Buy 1</button>
                 </div>
-                <div class="col_black col_black_small">
-                    <h1>Income</h1>
-                    <div class="sep_5px"></div>
-                    <h2 id="Straw_HutIncome"></h2>
-                    <div class="sep_3px"></div>
-                    <h2>Small Wooden House</h2>
-                    <div class="sep_3px"></div>
-                </div>
-                <div class="col_black col_black_big">
-                    <h1>Required</h1>
-                    <div class="sep_5px"></div>
-                    <h2>Straw Hut</h2>
-                    <div class="sep_3px"></div>
-                    <h2>Small Wooden House</h2>
-                    <div class="sep_3px"></div>
-                </div>
-                <div class="col_black col_black_small">
-                    <h1>Price</h1>
-                    <div class="sep_5px"></div>
-                    <h2 id="Straw_HutPrice"></h2>
-                    <div class="sep_3px"></div>
-                    <h2>Small Wooden House</h2>
-                    <div class="sep_3px"></div>
-                </div>
-                <div class="col_absolute bg_beige" style="top: 60px"></div>
-                <div class="col_absolute bg_light-brown" style="top: 126px"></div>
             </div>
         </div>
 
         <div class="game onglet energy">
-            <div class="content">
-                <div class="search-content">
-                    <div class="sub-content">
-                        <div>
-                            <i class="fa-solid fa-magnifying-glass" style="color: #bcbdbd"></i>
-                            <p>Search for a building</p>
-                        </div>
-                    </div>
-                    <div class="search-bar">
-                        <input type="text" id="input-box" placeholder="Search..." class="input" autocomplete="off">
-                    </div>
-                </div>
-                <div class="leg">
-                    <p>Building name</p>
-                    <p class="w56">Amount</p>
-                    <p class="w56">Income</p>
-                    <p class="w145">Price-earnings ratio</p>
-                    <p class="w100">Required</p>
-                    <p class="w37">Price</p>
-                    <p>Buy</p>
-                </div><div class="flexBox result-box">
-                    <div class="row" id="Row1">
-                        <h1>Small Wind Turbine</h1>
-                        <h2 class="w56" id="">0</h2>
-                        <div class="w56 w100">
-                            <img src="/assets/icons/energy.png" alt="" class="filter_yellow">
-                            <h2 id="EnergyProduction1"></h2>
-                        </div>
-                        <h2 class="w145" id="ProductionRatio1">1</h2>
-                        <h3 class="w100 reqSolo">
-                            <div>
-                                <img src="/assets/icons/wood.png" alt="" class="filter_brown">
-                                <h1 class="" id="WoodRequired1">50</h1>
-                            </div>
-                            <div class="invisible">
-                                <img src="/assets/icons/stone.png" alt="" class="filter_gray">
-                                <h1 class="" id="StoneRequired1"></h1>
-                            </div>
-                            <div class="invisible">
-                                <img src="/assets/icons/energy.png" alt="" class="filter_yellow">
-                                <h1 class="" id="EnergyRequired1"></h1>
-                            </div>
-                        </h3>
-                        <h2 class="w37" id="ProductionCost1">$50</h2>
-                        <button onclick="buyUpgrades(0, 0)" id="BuildingBuyButton1">x1</button>
-                    </div>
-                    <div class="BuildingLocked" id="EnergyLocked">
-                        <div>
-                            <img src="/assets/icons/croix.png" alt="">
-                            <h6>Locked</h6>
-                        </div>
-                        <p>Unlock<button class="tuto" onclick="Redirect(`Research1`, 4)">here</button></p>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
 
 
-        <div class="game onglet market"> 
+        <div class="game onglet market onglet_active" id="Tools">
             <div class="content">
                 <img src="/assets/icons/axe.png" alt="">
                 <h1>Axe</h1>
                 <div>
-                    <p>Price: <span id="CostTools1"></span></p>
-                    <p>Wood per level: <span id="ProductionTools1"></span></p>
-                    <p>Level: <span id="AmountTools1"></span></p>
+                    <p>Price: <span id="AxeMaxPricemoney"></span></p>
+                    <p>Wood/level: <span id="AxeIncome"></span></p>
+                    <p>Amount: <span id="AxeAmount"></span></p>
                 </div>
-                <button onclick="BuyTools(0,)" id="ToolsBuyText1">Buy <span>1</span></button>
+                <button class="bg_red" id="AxeButton"
+                        onclick="buyUpgrades('Axe', 'Axe', Tools)">Buy 1</button>
             </div>
             <div class="content">
                 <img src="/assets/icons/pickaxe.png" alt="">
                 <h1>Pickaxe</h1>
                 <div>
-                    <p>Price: <span id="CostTools2"></span></p>
-                    <p>Stone per level: <span id="ProductionTools2"></span></p>
-                    <p>Level: <span id="AmountTools2"></span></p>
+                    <p>Price: <span id="PickaxeMaxPricemoney"></span></p>
+                    <p>Stone/level: <span id="PickaxeIncome"></span></p>
+                    <p>Amount: <span id="PickaxeAmount"></span></p>
                 </div>
-                <button onclick="BuyTools(1)" id="ToolsBuyText2">Buy <span>1</span></button>
+                <button class="bg_red" id="PickaxeButton"
+                        onclick="buyUpgrades('Pickaxe', 'Pickaxe', Tools)">Buy 1</button>
             </div>
             <div class="content">
                 <img src="/assets/icons/energy_generator.png" alt="">
                 <h1>Energy Generator</h1>
                 <div>
                     <p>Price: <span id="CostTools3"></span></p>
-                    <p>Energy per level: <span id="ProductionTools3"></span></p>
+                    <p>Energy/level: <span id="ProductionTools3"></span></p>
                     <p>Level: <span id="AmountTools3"></span></p>
                 </div>
                 <button onclick="BuyTools(2)" id="ToolsBuyText3">Buy <span>1</span></button>
@@ -268,21 +278,21 @@
         </div>
 
 
-        <div class="game onglet ressources"> 
+        <div class="game onglet ressources" id="Ressources">
             <div class="content">
-                <button onclick="GainRessources(0)">
+                <button onclick="GainRessources('wood', 'Axe')" class="box-green">
                     <img src="/assets/images/forest-bg.png" alt="">
-                    <span id="BreakAmount1">Get 2 woods</span>
+                    <span id="AxeBreak"> </span>
                 </button>
             </div>
             <div class="content">
-                <button onclick="GainRessources(1)" class="box-gray">
+                <button onclick="GainRessources('stone', 'Pickaxe')" class="box-gray">
                     <img src="/assets/images/mine-bg.png" alt="">
-                    <span id="BreakAmount2">Get 2 woods</span>
+                    <span id="PickaxeBreak"></span>
                 </button>
             </div>
             <div class="content" style="margin-bottom: 100%;">
-                <button onclick="GainRessources(2)" class="box-dark">
+                <button onclick="GainRessources('energy')" class="box-dark">
                     <img src="/assets/images/energy-bg.png" alt="">
                     <span id="BreakAmount3">Get 2 woods</span>
                 </button>
@@ -374,12 +384,12 @@
     <script src="variables.js" type="text/javascript"></script>
     <script src="SaveLoad.js" type="text/javascript"></script>
     <script src="notation.js" type="text/javascript"></script>
-    <script src="ressourcesClick.js" type="text/javascript"></script>
     <script src="Search.js" type="text/javascript"></script>
     <script src="Update.js" type="text/javascript"></script>
     <script src="upgrades.js" type="text/javascript"></script>
     <script src="Energy.js" type="text/javascript"></script>
     <script src="research.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
+    <script src="ressourcesClick.js" type="text/javascript"></script>
     <script src="SortBy.js" type="text/javascript"></script>
 </html>

@@ -1,6 +1,27 @@
 const sideDivs = document.querySelectorAll(".category");
 
 
+function Update(UpdateType){
+  if(UpdateType === "Buildings"){
+    for(let BuildingType  in Buildings){
+      UpdateAllText(Buildings, BuildingType);
+    }
+  }
+
+  else if(UpdateType === "Tools"){
+    for(let ToolsName  in Tools){
+      UpdateAllText(Tools, "", ToolsName);
+    }
+  }
+
+  else if(UpdateType === "Ressources"){
+    for(let ToolsName  in Tools){
+      UpdateAllText('Ressources', "", ToolsName);
+    }
+  }
+}
+
+
 sideDivs.forEach(function (sideDiv) {
   sideDiv.addEventListener("click", function () {
     // Récupère l'index du div side cliqué
@@ -11,6 +32,7 @@ sideDivs.forEach(function (sideDiv) {
     }
     sideDiv.classList.add("side-selected");
 
+
     // Supprime la classe 'onglet_active' de toutes les divs avec la classe 'onglet'
     document.querySelectorAll(".onglet").forEach(function (onglet) {
       onglet.classList.remove("onglet_active");
@@ -18,6 +40,8 @@ sideDivs.forEach(function (sideDiv) {
 
     // Ajoute la classe 'onglet_active' à la div .onglet correspondante
     let targetOnglet = document.querySelectorAll(".onglet")[index];
+    UpdateType = targetOnglet.id;
+    Update(UpdateType);
     targetOnglet.classList.add("onglet_active");
   });
 });
@@ -47,39 +71,25 @@ function animateNumber(startTime, startValue, targetValue, element) {
 
 
 
-function MoneyGen() {
-  money += moneyPerSecond;
-  AllRessources[2] += energyPerSecond;
-  water += waterPerSecond;
-  wood += woodPerSecond;
 
- // Mise a jour des infos des batiments
-  for(let buildingName in Buildings){
-    for(let buildingComponent in Buildings[buildingName]){
-      id = buildingName + Buildings[buildingName][buildingComponent].id;
-      newTextContent = Buildings[buildingName][buildingComponent].Number;
-      Updatetext(id, newTextContent);
-    }
-  }
+
+
+function MoneyGen() {
+
+  AllRessources.money += AllRessourcesPerSecond.money;
+  AllRessources.energy += AllRessourcesPerSecond.energy;
+  AllRessources.wood += AllRessourcesPerSecond.wood;
+  AllRessources.stone += AllRessourcesPerSecond.stone;
+
+
+  Update(UpdateType);
 
   const startTime = Date.now();
-  animateNumber(startTime, money - moneyPerSecond-1, money, money_text);
-  animateNumber(startTime, AllRessources[2] - energyPerSecond, AllRessources[2], energy_text);
-  animateNumber(startTime, water - waterPerSecond, water, water_text);
-  animateNumber(startTime, AllRessources[0] - woodPerSecond, AllRessources[0], wood_text);
-  animateNumber(startTime, AllRessources[1] - stonePerSecond, AllRessources[1], stone_text);
-
-  for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
-    ToolsTextUpdate(ToolsIndex);
-  }
-  for(let index = 0; index < EnergyResearch.length; index++){
-    ResearchTextUpdate(index);
-  }
-  if(EnergyResearch[0][4] == 1){
-    for(let index = 0; index < HabitationEnergyAll.length; index++){
-      EnergyUpdateText(index);
-    }
-  }
+  animateNumber(startTime, AllRessources.money - AllRessourcesPerSecond.money-1, AllRessources.money, money_text);
+  animateNumber(startTime, AllRessources.energy - AllRessourcesPerSecond.energy, AllRessources.energy, energy_text);
+  animateNumber(startTime, AllRessources.water - AllRessourcesPerSecond.water, AllRessources.water, water_text);
+  animateNumber(startTime, AllRessources.wood - AllRessourcesPerSecond.wood, AllRessources.wood, wood_text);
+  animateNumber(startTime, AllRessources.stone - AllRessourcesPerSecond.stone, AllRessources.stone, stone_text);
 
   setTimeout(MoneyGen, 1000);
 }
@@ -90,13 +100,8 @@ function MoneyGen() {
 
 function ChangeBuyMode(NewBuyMode){
   BuyMode = NewBuyMode;
+  Update(UpdateType);
 
-  for(let BuildingIndex = 0; BuildingIndex < HabitationAll.length; BuildingIndex++){
-    MoneyTextUpdate(BuildingIndex);
-  }
-  for(let ToolsIndex = 0; ToolsIndex < AllTools.length; ToolsIndex++){
-    ToolsTextUpdate(ToolsIndex);
-    }
 
 }
 
@@ -104,6 +109,9 @@ function ChangeBuyMode(NewBuyMode){
 BuyModeButton = document.querySelectorAll(".buymode > button");
 BuyModeButton.forEach((button) =>{
   button.addEventListener("click", () =>{
+
+    Update(UpdateType);
+
     for(let i = 0; i < BuyModeButton.length; i++){
       BuyModeButton[i].classList.remove("btn-active");
     }
@@ -144,5 +152,8 @@ function Reset(){
     }
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 MoneyGen();

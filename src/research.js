@@ -10,7 +10,7 @@ function BuyResearch(index){
     }
 }
 
-function ResearchTextUpdate(index){
+/*function ResearchTextUpdate(index){
 
     const EnergyResearchPriceText = document.getElementById(`EnergyResearchPrice${index+1}`);
     const EnergyResearchWoodText = document.getElementById(`EnergyResearchWood${index+1}`);
@@ -80,3 +80,4 @@ function ResearchTextUpdate(index){
 for(let index = 0; index < EnergyResearch.length; index++){
     ResearchTextUpdate(index);
 }
+*/

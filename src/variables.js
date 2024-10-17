@@ -1,8 +1,8 @@
-const money_text = document.getElementById("money-text");
-const energy_text = document.getElementById("energy-text");
-const water_text = document.getElementById("water-text");
-const wood_text = document.getElementById("wood-text");
-const stone_text = document.getElementById("stone-text");
+const money_text = document.getElementById("moneyText");
+const energy_text = document.getElementById("energyText");
+const water_text = document.getElementById("waterText");
+const wood_text = document.getElementById("woodText");
+const stone_text = document.getElementById("stoneText");
 
 
 const upgrade_row = document.querySelectorAll(".row");
@@ -16,11 +16,65 @@ const EnergyLocked = document.getElementById("EnergyLocked");
 
 let BuyMode = 0;
 
-let money = 750000;
-let moneyPerSecond = 1;
-let energyPerSecond = 0;
-let water = 0;
-let waterPerSecond = 1;
+// Correspond a l'onglet de jeu qui va etre mis a jour (le texte seulement)
+let UpdateType = "Tools";
+
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+
+// PROBLEME AVEC LE CALCUL POUR LE MAX, quand on achete apres ca fais n'importe quoi
+// remettre la quantité max a 0 ??
+
+let AllRessources = {
+    money: 7500,
+    wood: 400,
+    stone: 0,
+    energy: 10,
+    water: 0,
+}
+
+let AllRessourcesPerSecond = {
+    money: 1,
+    wood: 0,
+    stone: 0,
+    energy: 0,
+    water: 0,
+}
+
+
+window.money = AllRessources.money;
+window.moneyPerSecond = AllRessourcesPerSecond.money;
+
+window.wood = AllRessources.wood;
+window.woodPerSecond = AllRessourcesPerSecond.wood;
+
+window.stone = AllRessources.stone;
+window.stonePerSecond = AllRessourcesPerSecond.stone;
+
+window.energy = AllRessources.energy;
+window.energyPerSecond = AllRessourcesPerSecond.energy;
+
+window.water = AllRessources.water;
+window.waterPerSecond = AllRessourcesPerSecond.water;
 
 
 let milestone = [25, 50, 100, 200];
@@ -45,18 +99,128 @@ let NotationIndex = 0;
 //10 = Prix en pierre
 //11 = Mult prix en pierre
 
+
+//FAIRE LE PRIX MAX ETC EN FONCTION DE ARGENT ET RESSOURCES
+
+
 let Buildings = {
-    Straw_Hut: {
-        Amount: {Number: 0, id: 'Amount'},
-        Income: {Number: 1, id: 'Income'},
-        Price: {Number: 50, id: 'Price'},
+    Habitations: {
+        Straw_Hut: {
+            Amount: 0,
+            Income: 1,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 50,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                },
+                //Quantité max qu'on peut acheter
+                MaxQuantity: {
+                    money: 0,
+                },
+                Prices: {
+                    money: 50,
+                },
+                InitialPrices: {
+                    money: 50,
+                },
+                IncomeType: "money",
+            }
+        },
+        Small_Wooden_House: {
+            Amount: 0,
+            Income: 3,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 350,
+                wood: 30,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                    wood: 1.01,
+                },
+                MaxQuantity: {
+                    money: 0,
+                    wood: 0,
+                },
+                //Prix pour acheter au max
+                Prices: {
+                    money: 350,
+                    wood: 30,
+                },
+                InitialPrices: {
+                    money: 350,
+                    wood: 30,
+                },
+                IncomeType: "money",
+            }
+        },
+        Wooden_House: {
+            Amount: 0,
+            Income: 7,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 500,
+                wood: 100,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                    wood: 1.02,
+                },
+                //Quantité max qu'on peut acheter
+                MaxQuantity: {
+                    money: 0,
+                    wood: 0,
+                },
+                Prices: {
+                    money: 500,
+                    wood: 100,
+                },
+                InitialPrices: {
+                    money: 500,
+                    wood: 100,
+                },
+                IncomeType: "money",
+            }
+        },
+        Big_Wooden_House: {
+            Amount: 0,
+            Income: 20,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 5000,
+                wood: 350,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                    wood: 1.02,
+                },
+                //Quantité max qu'on peut acheter
+                MaxQuantity: {
+                    money: 0,
+                    wood: 0,
+                },
+                Prices: {
+                    money: 5000,
+                    wood: 350,
+                },
+                InitialPrices: {
+                    money: 5000,
+                    wood: 350,
+                },
+                IncomeType: "money",
+            }
+        },
     }
 }
 
-let BuildingLength = Object.keys(Buildings).length;
 
-let Straw_Hut = [0 /*0*/, 1 /*1*/, 50 /*2*/, 1.03 /*3*/, 0 /*4*/,
- 1.1 /*5*/, 0 /*6*/, 1.07 /*7*/, 0 /*8*/, 0 /*9*/, 0 /*10*/, 25 /*11*/];
+let BuildingLength = Object.keys(Buildings).length;
 
 let Small_Wooden_House = [0 /*0*/, 3 /*1*/, 500 /*2*/, 1.025 /*3*/, 0 /*4*/,
  1.1 /*5*/, 0 /*6*/, 1.07 /*7*/, 50 /*8*/, 1.05/*9*/, 0 /*10*/, 25 /*11*/];
@@ -82,10 +246,6 @@ let Wooden_Chalet = [0 /*0*/, 35 /*1*/, 150000 /*2*/, 1.001 /*3*/, 100 /*4*/,
 let Stone_Chalet = [0 /*0*/, 35 /*1*/, 150000 /*2*/, 1.001 /*3*/, 3000 /*4*/,
 1.05 /*5*/, 0 /*6*/, 1.07 /*7*/, 20000 /*8*/, 1.0015/*9*/, 25000 /*10*/, 1.02 /*11*/];
 
-let HabitationAll = [Straw_Hut,
-   Small_Wooden_House, Wooden_House, Big_Wooden_House,
-   Small_Stone_House, Stone_House, Big_Stone_House,
-  Wooden_Chalet, Stone_Chalet];
 
 let HabitationMatTypes = [1000000, 0, 0, 0, 1];
 // Correspond a un chiffre qui commence à 0
@@ -136,18 +296,68 @@ let Axe = [0, 100, 1.1, 1, "wood(s)"];
 let Pickaxe = [0, 50000, 1.05, 1, "stone(s)"];
 let Energy_Gen = [0, 200000, 1.02, 1, "energy(ies)"];
 
+let Tools = {
+    Axe: {
+        Axe: {
+            Amount: 0,
+            Income: 1,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 500,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                },
+                //Quantité max qu'on peut acheter
+                MaxQuantity: {
+                    money: 0,
+                },
+                Prices: {
+                    money: 500,
+                },
+                InitialPrices: {
+                    money: 500,
+                },
+                IncomeType: "none",
+                Collect: "wood",
+            }
+        }
+    },
+    Pickaxe: {
+        Pickaxe: {
+            Amount: 0,
+            Income: 1,
+            //Prix pour acheter au max
+            MaxPrice: {
+                money: 15000,
+            },
+            NotShow: {
+                Augmentation: {
+                    money: 1.02,
+                },
+                //Quantité max qu'on peut acheter
+                MaxQuantity: {
+                    money: 0,
+                },
+                Prices: {
+                    money: 15000,
+                },
+                InitialPrices: {
+                    money: 15000,
+                },
+                IncomeType: "none",
+                Collect: "stone",
+            }
+        }
+    }
+}
+
 let AllTools = [Axe, Pickaxe, Energy_Gen];
 
 //-------------------------------Ressources---------------------------------
 
 
-let wood = 0;
-let woodPerSecond = 0;
-let stone = 0;
-let stonePerSecond = 0;
-let energy = 0;
-
-let AllRessources = [wood, stone, energy];
 
 
 //------------------------------Batiment Energetique-----------------------------------------

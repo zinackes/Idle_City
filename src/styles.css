@@ -15,6 +15,14 @@ body{
     display: none !important;
 }
 
+.absolute{
+    position: absolute;
+}
+
+.relative{
+    position: relative;
+}
+
 :root{
     --royalBlue-50 : #D9E6FD;
     --royalBlue-100 : #B4CBFC;
@@ -38,6 +46,9 @@ body{
     --gray: #c2bebb;
 
     --color-text-gray: #bcbdbd;
+
+    --brown : #413f3e;
+    --light-brown : #59564f;
     
 }
 
@@ -191,7 +202,7 @@ main .side .buymode{
     border-radius: 0.75rem;
     padding: 0.75rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 200px;
     gap: 4px;
 }
@@ -203,8 +214,7 @@ main .side .buymode{
     font-weight: 500;
     font-size: 13.5px;
     text-align: center;
-    letter-spacing: 1px;
-    padding: 0.45rem 0.65rem;
+    padding: 0.35rem 0.55rem;
     border-radius: 0.5rem;
     cursor: pointer;
 }
@@ -315,6 +325,11 @@ main .side .buymode{
     align-items: center;
 }
 
+.flex_column{
+    display: flex;
+    flex-direction: column;
+}
+
 .flex_small{
     display: flex;
     justify-content: end;
@@ -322,27 +337,90 @@ main .side .buymode{
     position: relative;
 }
 
-.flex_justify{
+.flex_align{
     display: flex;
     align-items: center;
 }
 
+.search{
+    background: #59564f;
+    border-radius: 50px;
+    padding: 10px;
+    gap: 10px;
+}
+
 .search-bar{
     border-radius: 50px;
-    background: #2F50C1;
+    background: #413f3e;
+    width: 100%;
+    padding: 5px;
+}
+
+
+.search-bar input{
+    background: transparent;
+    border-radius: 15px;
+    height: 100%;
+    border: none;
+    width: 100%;
+    color: #f6f7f8;
+    padding-left: 10px;
+}
+
+.search-bar input:focus-visible{
+    border: 1px solid #413f3e;
+    outline: 0;
+}
+
+.round_brown{
+    border-radius: 50px;
+    background: #413f3e;
+    padding: 10px;
 }
 
 
 .col_absolute{
     position: absolute;
-    width: 110%;
+    width: 115%;
     height: 66px;
-    background: white;
     top: 0;
     left: 0;
     z-index: -1;
     border-radius: 15px;
 }
+
+.col_absolute .col{
+    width: 100%;
+    height: 66px;
+    border-radius: 15px;
+}
+
+.game button{
+    max-height: 42px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 12.5px 25px;
+    outline: 0;
+    font-weight: 600;
+    background: #6a8936;
+    color: #010101;
+    cursor: pointer;
+}
+
+.game button:hover{
+    transform: scale(1.1);
+    transition: all 0.2S ease;
+    border-color: #0A0A0B !important;
+}
+
+.flex_btn{
+    gap: 25px;
+}
+
+.flex_btn button:first-child{
+    margin-top: 45px;
+}
+
 
 .col_black{
     background: var(--black-900);
@@ -390,33 +468,39 @@ main .side .buymode{
     border-radius: 3px;
 }
 
-
-.search-content .search-bar{
-    background: #3d3b3a;
-    width: 95%;
-    height: 30px;
-    position: absolute;
-    bottom: -37%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-    border: 1px solid #555555;
+.required h2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    row-gap: 5px;
 }
 
-.search-bar input{
-    background: transparent;
-    border-radius: 15px;
-    height: 100%;
-    border: none;
-    width: 100%;
-    color: #f6f7f8;
-    padding-left: 10px;
+.required h2 img{
+    max-height: 15px;
+
 }
 
-.search-bar input:focus-visible{
-    border: 1px solid var(--royalBlue-300);
-    outline: 0;
+
+
+
+
+/*PARTIE MARKET*/
+/*
+
+ */
+
+.market{
+    flex-direction: row;
 }
+
+.market .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
 
 .game .content .leg{
     display: flex;
@@ -535,14 +619,10 @@ main .side .buymode{
 
 .game .content .row button, .market .content button{
     border: none;
-    width: 4rem;
-    height: 1.75rem;
+    padding: 10px 40px;
     border-radius: 4px;
-    background: linear-gradient(-45deg, #3529e7, #9046ff, #cb5ef5, #b68bf4 );
-    background-size: 660%;
-    animation: gradient 16s linear infinite;
-    font-family: "Poppins";
     cursor: pointer;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.4);
 }
 
 .game .content .row button:hover{
@@ -635,8 +715,6 @@ main .side .buymode{
 }
 
 
-/*PARTIE DU MAGASIN*/
-
 
 .market{
 
@@ -675,37 +753,6 @@ main .side .buymode{
     font-size: 16px;
 }
 
-.market .content button{
-    width: 7.2rem;
-    height: 2.35rem;
-    border-radius: 0.75rem;
-    position: relative;
-    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.4);
-}
-
-.market .content button:before{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: none;
-    content: '';
-    display: block;
-    border-radius: 0.75rem;
-}
-
-.market .content button:hover::before{
-    animation: button-hover 1.25s infinite linear;
-}
-
-.market .content .anim_green:hover::before{
-    animation: button-hover_green 1.25s infinite linear !important;
-}
-.market .content .anim_red:hover::before{
-    animation: button-hover_red 1.25s infinite linear !important;
-}
-
 
 
 /*PARTIE DES RESSOURCES*/
@@ -738,6 +785,7 @@ main .side .buymode{
     position: relative;
     width: 100%;
     height: 100%;
+    max-height: 100% !important;
     background: transparent;
     cursor: pointer;
     display: flex;

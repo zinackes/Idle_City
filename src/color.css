@@ -62,11 +62,24 @@
 }
 
 
+.bg_red{
+    background: var(--red) !important;
+    border-color: var(--red) !important;
+}
+
+.bg_green{
+    background: var(--green) !important;
+    border-color: var(--green) !important;
+}
 
 
 
 
 /*Ressources colors*/
+
+.ressources .content .box-green:hover{
+    border: 2px solid #71FF7F !important;
+}
 
 .ressources .content .box-gray{
     border: 2px solid #c67432 !important;
@@ -77,6 +90,8 @@
     box-shadow: 0 3px 45px rgb(198, 116, 50, 0.6);
 }
 
+
+
 .ressources .content .box-dark{
     border: 2px solid #cd966e !important;
     box-shadow: 0 3px 30px rgb(205, 150, 110, 0.6);
@@ -85,7 +100,6 @@
 .ressources .content .box-dark:hover{
     box-shadow: 0 3px 45px rgb(205, 150, 110, 0.6);
 }
-
 
 
 .anim_green{
