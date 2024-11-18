@@ -33,15 +33,13 @@ function getMaxQuantity(Type, BuildingType, Amount, NormalPrice, PriceAugmentati
     RessourceMoney = AllRessources[RessourceType];
 
     maxQuantity = Math.floor(Math.log(1 - (RessourceMoney * (1 - PriceAugmentation) / (NormalPrice * Math.pow(PriceAugmentation, Amount)))) / Math.log(PriceAugmentation));
+    RessourceMaxQuantityList.push(maxQuantity);
   }
-    for(let RessourceType in Type[BuildingType][buildingName].NotShow.MaxQuantity){
-      Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType] = Math.min(...RessourceMaxQuantityList);
-      console.log(Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType]);
-    }
+  for(let RessourceType in Type[BuildingType][buildingName].NotShow.MaxQuantity) {
+    Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType] = Math.min(...RessourceMaxQuantityList);
+  }
 
 }
-
-
 
 
 function buyUpgrades(BuildingType, Name, Type) {
