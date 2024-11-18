@@ -17,7 +17,7 @@ const EnergyLocked = document.getElementById("EnergyLocked");
 let BuyMode = 0;
 
 // Correspond a l'onglet de jeu qui va etre mis a jour (le texte seulement)
-let UpdateType = "Tools";
+let UpdateType = "Buildings";
 
 
 

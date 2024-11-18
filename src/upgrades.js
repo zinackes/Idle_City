@@ -19,11 +19,6 @@ function getPrice(Type, BuildingType, Amount, Price, PriceAugmentation, Ressourc
       break;
   }
 
-  /*console.log("Augmentation prix: " + PriceAugmentation);
-  console.log("Prix pour " + HowManyBuy +  " : " + Price * (Math.pow(PriceAugmentation, Amount) *
-      (Math.pow(PriceAugmentation, HowManyBuy) - 1) / (PriceAugmentation - 1)));
-  console.log("===============");*/
-
 
   return Price * (Math.pow(PriceAugmentation, Amount) *
       (Math.pow(PriceAugmentation, HowManyBuy) - 1) / (PriceAugmentation - 1));
@@ -31,59 +26,19 @@ function getPrice(Type, BuildingType, Amount, Price, PriceAugmentation, Ressourc
 
 
 function getMaxQuantity(Type, BuildingType, Amount, NormalPrice, PriceAugmentation, RessourceType, buildingName) {
-  /*console.log("=============");
-  console.log("DEBUT");
-  console.log("=============");*/
-  //for(let RessourceType in Buildings[BuildingName].NotShow.MaxQuantity) {
-    RessourceMoney = AllRessources[RessourceType];
-
-  let maxQuantity = Math.floor(Math.log(1 - (RessourceMoney * (1 - PriceAugmentation) / (NormalPrice * Math.pow(PriceAugmentation, Amount)))) / Math.log(PriceAugmentation));
-
-  //let maxQuantity = Math.floor(Math.log(RessourceMoney * (PriceAugmentation - 1) /
-        //(NormalPrice * Math.pow(PriceAugmentation, Amount)) + 1) / Math.log(PriceAugmentation));
-
-    if( NormalPrice === 0){
-      return 0;
-    }
-    else{
-      //console.log("Ressource: " + RessourceType);
-      Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType] = maxQuantity;
-      //console.log(Buildings[buildingName].NotShow.MaxQuantity)
-    }
-  //}
-
-}
-
-function getFixedMaxQuantity(Type, BuildingType, Amount, InitialPrice, Augmentation, RessourceType, buildingName){
-
+  let maxQuantity = 0;
   let RessourceMaxQuantityList = [];
 
-  for(let RessourceType in Type[BuildingType][buildingName].NotShow.MaxQuantity){
-    RessourceMaxQuantityList.push(Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType]);
+  for(let RessourceType in Type[BuildingType][buildingName].NotShow.MaxQuantity) {
+    RessourceMoney = AllRessources[RessourceType];
+
+    maxQuantity = Math.floor(Math.log(1 - (RessourceMoney * (1 - PriceAugmentation) / (NormalPrice * Math.pow(PriceAugmentation, Amount)))) / Math.log(PriceAugmentation));
   }
-    if(Math.min(...RessourceMaxQuantityList) === 0){
-      for(let NewResource in Type[BuildingType][buildingName].NotShow.MaxQuantity){
-          if(RessourceType === NewResource){
-
-          }
-          else{
-            Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType] = Math.max(...RessourceMaxQuantityList);
-            getMaxQuantity(Type, BuildingType, Amount, InitialPrice, Augmentation, NewResource, buildingName);
-          }
-      }
-    }
-    else{
+    for(let RessourceType in Type[BuildingType][buildingName].NotShow.MaxQuantity){
       Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType] = Math.min(...RessourceMaxQuantityList);
+      console.log(Type[BuildingType][buildingName].NotShow.MaxQuantity[RessourceType]);
     }
-}
 
-function UpdateAvailableOrNot(RessourceRequiredText, Ressource, RessourceCost) {
-    if(Ressource >= RessourceCost){
-      RessourceRequiredText.style.color = "var(--green)";
-    }
-    else{
-      RessourceRequiredText.style.color ="var(--red)";
-    }
 }
 
 
@@ -112,6 +67,7 @@ function buyUpgrades(BuildingType, Name, Type) {
     // Met a jour la quantité du batiment
     Type[BuildingType][Name].Amount += Type[BuildingType][Name].NotShow.MaxQuantity.money;
     Update(UpdateType);
+    UpdateRessources();
   }
 }
 
